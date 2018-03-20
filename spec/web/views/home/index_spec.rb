@@ -6,7 +6,7 @@ describe Web::Views::Home::Index do
   let(:view)      { Web::Views::Home::Index.new(template, exposures) }
   let(:rendered)  { view.render }
 
-  it 'exposes #format' do
-    view.format.must_equal exposures.fetch(:format)
+  it 'has proper header' do
+    rendered.must_contain? '<div class="title">Calendar</div>'
   end
 end
