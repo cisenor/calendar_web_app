@@ -6,7 +6,15 @@ describe Web::Views::Home::Index do
   let(:view)      { Web::Views::Home::Index.new(template, exposures) }
   let(:rendered)  { view.render }
 
-  it 'exposes #format' do
-    view.format.must_equal exposures.fetch(:format)
+  it 'has 1 year on the index page' do 
+    page.has_css?('.year', count: 1)
+  end
+
+  it 'has 12 months on the index page' do
+    page.has_css?('.month', count: 12)
+  end
+
+  it 'has a form to add a calendar entry' do
+    page.has_css?('form#add-entry', count: 1)
   end
 end
