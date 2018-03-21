@@ -24,10 +24,11 @@
     {
       "label": "Test",
       "type": "shell",
-      "command": "rspec",      
+      "command": "bundle",      
       "args": [
-        "--pattern",
-        "${workspaceRoot}/spec/**/*_rspec.rb"
+        "exec",
+        "rake",
+        "test"
       ],
       "presentation": {
         "panel": "dedicated"

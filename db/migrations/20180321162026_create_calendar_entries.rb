@@ -5,6 +5,8 @@ Hanami::Model.migration do
 
       column :created_at, DateTime, null: false
       column :updated_at, DateTime, null: false
+      column :name, String, null: false
+
     end
   end
 end
