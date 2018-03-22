@@ -1,4 +1,5 @@
 class CalendarEntryList
+  attr_reader :repo
   def initialize
     @repo = CalendarEntryRepository.new
   end
@@ -9,6 +10,10 @@ class CalendarEntryList
     return :friday13 if day.wday == 5 && day.day == 13
     return :holiday if holiday day
     :none
+  end
+
+  def entries
+    @repo.all
   end
 
   private

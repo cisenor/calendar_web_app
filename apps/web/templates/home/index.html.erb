@@ -1,8 +1,11 @@
-<div class="year">
   <div class="header"><%= year.year %></div>
-  <div class="container">
+  <div class="year">
+  <div class="year-container">
     <% year.months.each do |month| %> 
       <%= render partial: 'home/month', locals: { month: month } %>
     <% end %>
+  </div>
+  <div class="date-container">
+    <%= render partial: 'home/important_dates'%>
   </div>
 </div>
