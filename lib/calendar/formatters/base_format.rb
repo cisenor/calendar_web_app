@@ -8,7 +8,7 @@ class BaseFormat
     }
   end
 
-  def styling(style)
+  def style(style)
     @highlights.fetch(style, '')
   end
 end

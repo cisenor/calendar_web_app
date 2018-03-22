@@ -2,8 +2,9 @@ module Web::Views::Home
   class Index
     include Web::View
 
-    def get_style(day)
-      formatter.get_style(day)
+    def style(day) 
+      style_tag = entry_list.style(day)
+      formatter.style(style_tag)
     end
   end
 end

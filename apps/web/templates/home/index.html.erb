@@ -19,7 +19,7 @@
           <div class="week">
             <% week.each do |day| %>
               <% if day %>
-                <span class="<%= get_style(day) %>"><%= day.day %></span>
+                <span class="<%= style(day) %>"><%= day.day %></span>
               <% else %>
                 <span></span>
               <% end %>
