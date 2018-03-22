@@ -1,34 +1,15 @@
 <html>
 <head>
-  <link rel="stylesheet" href="styles.css">
+  <%= stylesheet 'styles' %>
 </head>
 <body>
-<div class="year">
-  <div class="header"><%= year.year %></div>
-  <div class="container">
-    <% year.months.each do |month| %> 
-    <div class="month">
-    <%= stylesheet 'reset' %>
-      <div class="month-name"><%= month.name %></div>
-      <div class="week-header">
-        <% year.weekday_headers.each do |header| %>
-          <span><%= header %></span>
-        <% end %>
-      </div>
-        <% month.weeks.each do |week| %>
-          <div class="week">
-            <% week.each do |day| %>
-              <% if day %>
-                <span class="<%= style(day) %>"><%= day.day %></span>
-              <% else %>
-                <span></span>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <div class="year">
+    <div class="header"><%= year.year %></div>
+    <div class="container">
+      <% year.months.each do |month| %> 
+        <%= render partial: 'home/month', locals: { month: month } %>
+      <% end %>
+    </div>
   </div>
   <%# render partial: '_important_dates.erb' %>
 </body>
