@@ -3,12 +3,10 @@ require_relative 'month.rb'
 class Year
   attr_reader :year
   attr_reader :months
-  attr_reader :formatter 
   def initialize(in_year)
     in_year ||= Date.today.year
     @year = in_year
     @months = (1..12).map { |m| Month.new(year, m) }
-    @formatter = FormatFactory.new.create('')
   end
 
   def weekday_headers

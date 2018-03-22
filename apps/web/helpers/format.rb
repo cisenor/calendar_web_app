@@ -1,9 +1,9 @@
 
-module Format::Helpers::Web
-  private
-  SEPARATOR = ''.freeze
-
-  def custom_format(day)
-    '---' + day.to_s
+module Web
+  module Helpers
+    module FormatHelpers
+      def get_class(day)day.to_s
+      end
+    end
   end
 end

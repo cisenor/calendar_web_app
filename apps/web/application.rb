@@ -271,7 +271,7 @@ module Web
       view.prepare do
         include Hanami::Helpers
         include Web::Assets::Helpers
-        include Web::Helpers::Format
+        include Web::Helpers::FormatHelpers
       end
     end
 

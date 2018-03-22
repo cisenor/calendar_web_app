@@ -6,8 +6,7 @@
 <div class="year">
   <div class="header"><%= year.year %></div>
   <div class="container">
-    <% year.months.each do |month| %>
-    <%= render partial: "home/month", locals: { month: month}%>  
+    <% year.months.each do |month| %> 
     <div class="month">
     <%= stylesheet 'reset' %>
       <div class="month-name"><%= month.name %></div>
@@ -20,7 +19,7 @@
           <div class="week">
             <% week.each do |day| %>
               <% if day %>
-                <%= custom_format day.day %>
+                <span class="<%= get_style(day) %>"><%= day.day %></span>
               <% else %>
                 <span></span>
               <% end %>
