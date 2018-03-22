@@ -6,7 +6,7 @@ module Web::Controllers::Home
     expose :year, :formatter
     def call(params)
       @year = Year.new(params[:year])
-      @formatter = FormatFactory.new.create(params)
+      @formatter = FormatFactory.new.create(params[:format])
     end
   end
 end
