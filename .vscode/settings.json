@@ -24,9 +24,11 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
+    ".gitignore":true,
     ".env.*":true,
     "Gemfile*":true,
     "Rakefile":true,
-    "config.ru":true
+    "config.ru":true,
+    ".hanamirc":true
   }
 }
