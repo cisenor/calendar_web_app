@@ -1,7 +1,7 @@
 class BaseFormat
   def initialize
     @highlights = {
-      holiday: 'bold',
+      holiday: 'holiday',
       leap: 'leap-day',
       friday13: 'friday-13',
       none: ''
