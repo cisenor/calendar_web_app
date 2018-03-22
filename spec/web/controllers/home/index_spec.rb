@@ -4,7 +4,7 @@ require_relative '../../../../lib/calendar/models/year'
 describe Web::Controllers::Home::Index do
   let(:action) { Web::Controllers::Home::Index.new }
   let(:params) { Hash[] }
-  let(:important_dates) {CalendarEntryRepository.new}
+  let(:important_dates) { CalendarEntryRepository.new }
 
   it 'is successful' do
     response = action.call(params)
@@ -13,7 +13,7 @@ describe Web::Controllers::Home::Index do
 
   it 'exposes the year object' do
     action.call(params)
-    action.exposes[:year].must_equal [@year]
+    action.exposures[:year].year.must_equal 2018
   end
 
   it 'defaults to current year' do

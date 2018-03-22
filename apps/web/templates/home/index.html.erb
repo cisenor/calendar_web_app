@@ -1,0 +1,36 @@
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="year">
+  <div class="header"><%= year.year %></div>
+  <div class="container">
+    <% year.months.each do |month| %>
+    <%= render partial: "home/month", locals: { month: month}%>  
+    <div class="month">
+    <%= stylesheet 'reset' %>
+      <div class="month-name"><%= month.name %></div>
+      <div class="week-header">
+        <% year.weekday_headers.each do |header| %>
+          <span><%= header %></span>
+        <% end %>
+      </div>
+        <% month.weeks.each do |week| %>
+          <div class="week">
+            <% week.each do |day| %>
+              <% if day %>
+                <%= custom_format day.day %>
+              <% else %>
+                <span></span>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  </div>
+  <%# render partial: '_important_dates.erb' %>
+</body>
+</html>
