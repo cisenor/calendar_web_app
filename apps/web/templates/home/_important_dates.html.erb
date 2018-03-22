@@ -1,0 +1,10 @@
+<div class='title'>Important Dates</div>
+<% if entry_list.entries.any? %>
+  <ul>
+    <% entry_list.entries.each do |entry| %>
+      <li><%= entry.display year.year %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <div>There are no calendar entries stored.</div>
+<% end %>

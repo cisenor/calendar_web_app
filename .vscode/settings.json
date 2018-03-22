@@ -15,7 +15,8 @@
     ]
   },
   "triggerTaskOnSave.tasks": {
-    "Test": ["**/*.rb"]
+    "Test": ["**/*.rb"],
+    "Sass Compile": ["**/*.scss"]
   },
   "triggerTaskOnSave.restart": false,
   "files.exclude": {

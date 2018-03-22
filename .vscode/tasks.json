@@ -5,7 +5,7 @@
   "tasks": [{
       "label": "Sass Compile",
       "type": "shell",
-      "command": "sass dist/styles.scss dist/styles.css",
+      "command": "sass apps/web/assets/styles.scss apps/web/assets/styles.css",
       "group": "build"
     },
     {

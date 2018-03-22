@@ -1,8 +1,13 @@
 class CalendarEntry < Hanami::Entity
+  
   def date(year)
     return date_from_fixed year if @attributes.key?(:day)
     return date_from_occurrence year if @attributes.key?(:occurrence_week)
     fail 'Calendar entry entity needs either a day or an occurrence_week'
+  end
+
+  def display(year)
+    date(year).to_s + ' - ' + name
   end
 
   private
