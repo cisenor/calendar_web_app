@@ -28,7 +28,8 @@
       "args": [
         "exec",
         "rake",
-        "test"
+        "test",
+        "--trace"
       ],
       "presentation": {
         "panel": "dedicated"

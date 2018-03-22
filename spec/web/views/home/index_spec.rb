@@ -1,7 +1,7 @@
 require_relative '../../../spec_helper'
 
 describe Web::Views::Home::Index do
-  let(:exposures) { Hash[year: Year.new(2018), formatter: FormatFactory.new.create(''), entry_list: CalendarEntryList.new] }
+  let(:exposures) { Hash[year: Year.new(2018), formatter: FormatFactory.new.create(''), entry_list: CalendarEntryList.new, format: 'html'] }
   let(:template)  { Hanami::View::Template.new('apps/web/templates/home/index.html.erb') }
   let(:view)      { Web::Views::Home::Index.new(template, exposures) }
   let(:rendered)  { view.render }
@@ -17,7 +17,7 @@ describe Web::Views::Home::Index do
   it 'properly highlights leap days' do
     rendered.scan('class="leap-day"').count.must_equal 0
 
-    exp = Hash[year: Year.new(2000), formatter: FormatFactory.new.create(''), entry_list: CalendarEntryList.new]
+    exp = Hash[year: Year.new(2000), formatter: FormatFactory.new.create(''), entry_list: CalendarEntryList.new, format: 'html']
     temp = Hanami::View::Template.new('apps/web/templates/home/index.html.erb')
     v = Web::Views::Home::Index.new(temp, exp)
     rendered2000 = v.render
