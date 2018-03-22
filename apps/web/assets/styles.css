@@ -1,11 +1,14 @@
 .bold {
   font-weight: 600; }
 
+.holiday {
+  background-color: #9ee49e; }
+
 .leap-day {
-  background-color: green; }
+  background-color: #7efff9; }
 
 .friday-13 {
-  background-color: red; }
+  background-color: #fda9a9; }
 
 .centered {
   text-align: center; }

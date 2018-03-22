@@ -3,7 +3,7 @@ describe 'Test formatters' do
   let(:formatter) { FormatFactory.new.create('') }
 
   it 'returns bold when given a holiday tag' do
-    formatter.style(:holiday).must_equal 'bold'
+    formatter.style(:holiday).must_equal 'holiday'
   end
 
   it 'returns leap-day when given a leap tag' do
