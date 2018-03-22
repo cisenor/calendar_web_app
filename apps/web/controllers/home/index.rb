@@ -1,6 +1,5 @@
 
 require_relative '../../../../lib/calendar/formatters/format_factory'
-require_relative '../../../../lib/calendar/models/calendar_entry_list'
 module Web::Controllers::Home
   class Index
     include Web::Action
@@ -8,7 +7,7 @@ module Web::Controllers::Home
     def call(params)
       @year = Year.new(params[:year])
       @formatter = FormatFactory.new.create(params[:format])
-      @entry_list = CalendarEntryList.new
+      @entry_list = CalendarEntryRepository.new
     end
   end
 end
