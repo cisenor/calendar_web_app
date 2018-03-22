@@ -1,1 +1,11 @@
-<div> this is a month <%= month.name %></div>
+<div class="month">
+  <div class="month-name"><%= month.name %></div>
+  <div class="week-header">
+    <% year.weekday_headers.each do |header| %>
+      <span><%= header %></span>
+    <% end %>
+  </div>
+  <% month.weeks.each do |week| %>
+    <%= render partial: 'home/week', locals: { week: week } %>
+  <% end %>
+</div>
