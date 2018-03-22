@@ -14,10 +14,6 @@ describe Web::Views::Home::Index do
     rendered.scan('class="month"').count.must_equal 12
   end
 
-  it 'has a form to add a calendar entry' do
-    rendered.scan('class="add-entry-form"').count.must_equal 1
-  end
-
   it 'properly highlights leap days' do
     rendered.scan('class="leap-day"').count.must_equal 0
 
@@ -28,4 +24,9 @@ describe Web::Views::Home::Index do
 
     rendered2000.scan('class="leap-day"').count.must_equal 1
   end
+
+  it 'has a form to add a calendar entry' do
+    rendered.scan('class="add-entry-form"').count.must_equal 1
+  end
+
 end
