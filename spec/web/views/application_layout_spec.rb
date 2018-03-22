@@ -6,6 +6,6 @@ describe Web::Views::ApplicationLayout do
   let(:template) { Hanami::View::Template.new('apps/web/templates/application.html.erb') }
 
   it 'contains application name' do
-    rendered.must_include('Calendar')
+    rendered.scan('<div class="title">Calendar</div>').count.must_equal 1
   end
 end
