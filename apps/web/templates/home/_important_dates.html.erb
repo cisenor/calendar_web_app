@@ -8,4 +8,6 @@
 <% else %>
   <div>There are no calendar entries stored.</div>
 <% end %>
-<%= link_to('Add a date', routes.path(:add_date), class: 'button') %>
+<div class="controls">
+  <%= link_to('Add a date', routes.path(:add_date), class: 'btn') %>
+</div>
