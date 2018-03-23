@@ -1,1 +1,4 @@
 <%= render partial: 'dates/add_date_form'%>
+<% unless params.valid? %>
+  <%= render partial: 'dates/add_errors'%>
+<% end %>
