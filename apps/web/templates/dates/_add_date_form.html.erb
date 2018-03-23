@@ -1,0 +1,22 @@
+<%=
+  form_for :calendar_entry, routes.path(:create) do
+    div class: 'cinput' do
+      label         :name
+      text_field    :name
+    end
+
+    div class: 'input' do
+      label         :month
+      number_field  :month
+    end
+
+    div class: 'input' do
+      label         :day
+      number_field  :day
+    end
+
+    div class: 'controls' do
+      submit 'Add'
+    end
+  end
+%>
