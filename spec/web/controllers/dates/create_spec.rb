@@ -9,7 +9,7 @@ describe Web::Controllers::Dates::Create do
   end
 
   describe 'with valid parameters' do
-    let(:params) { Hash[calendar_entry: { name: 'test123', month: 2, day: 2 }] }
+    let(:params) { Hash[calendar_entry: {type_occurrence: "true", name: 'test123', month: 2, day: 2 }] }
 
     it 'creates a new calendar entry' do
       action.call(params)
