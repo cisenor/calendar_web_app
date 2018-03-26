@@ -1,64 +1,71 @@
-<div class="note">
-  <p>Add a date to the calendar using either a fixed date or an occurrence.</p>
-</div>
-<div class="radio-buttons">
-  <input type="radio" value="fixed" id="radio-fixed" name="date-type" checked />
-  <label for="radio-fixed">fixed</label>
-  <input type="radio" id="radio-occurrence" value="occurrence" name="date-type">
-  <label for="radio-occurrence">occurrence</label>
- </div>
-<div class="date-form" id="form-fixed">
-  <p>Create a fixed date.</p>
-  <%=
-    form_for :calendar_entry, routes.path(:create) do
-      div class: 'cinput' do
-        label         :name
-        text_field    :name
+<div class="wrapper">
+  <div class="note">
+    <p>Add a date to the calendar using either a fixed date or an occurrence.</p>
+  </div>
+  <div class="radio-buttons">
+    <div>
+      <input type="radio" value="fixed" id="radio-fixed" name="date-type" checked />
+      <label for="radio-fixed">Fixed</label>
+    </div>
+    <div>
+      <input type="radio" id="radio-occurrence" value="occurrence" name="date-type">
+      <label for="radio-occurrence">Occurrence</label>
+    </div>
+  </div>
+  <div class="date-form" id="form-fixed">
+    <p>Create a fixed date.</p>
+    <%=
+      form_for :calendar_entry, routes.path(:create) do
+        div class: 'cinput' do
+          label         :name
+          text_field    :name
+        end
+
+        div class: 'input' do
+          label         :month
+          number_field  :month
+        end
+
+        div class: 'input' do
+          label         :day
+          number_field  :day  
+        end
+
+        hidden_field :type_fixed, {value: true}
+
+        div class: 'controls' do
+          submit 'Add', class: 'btn'
+        end
       end
+    %>
+  </div>
+  <div class="date-form" style="display:none" id="form-occurrence">
 
-      div class: 'input' do
-        label         :month
-        number_field  :month
+    <p>Create a date by occurrence.</p>
+    <%=
+      form_for :calendar_entry, routes.path(:create) do
+        div class: 'cinput' do
+          label         :name
+          text_field    :name
+        end
+
+        div class: 'input' do
+          label         :month
+          number_field  :month
+        end
+
+        div class: 'input' do
+          label         :day
+          number_field  :day
+        end
+
+        hidden_field :type_occurrence, {value: true}
+
+        div class: 'controls' do
+          submit 'Add', class: 'btn'
+        end
       end
-
-      div class: 'input' do
-        label         :day
-        number_field  :day  
-      end
-
-      hidden_field :type_fixed, {value: true}
-
-      div class: 'controls' do
-        submit 'Add', class: 'btn'
-      end
-    end
-  %>
-</div>
-<div class="date-form" style="display:none" id="form-occurrence">
-
-  <p>Create a date by occurrence.</p>
-  <%=
-    form_for :calendar_entry, routes.path(:create) do
-      div class: 'cinput' do
-        label         :name
-        text_field    :name
-      end
-
-      div class: 'input' do
-        label         :month
-        number_field  :month
-      end
-
-      div class: 'input' do
-        label         :day
-        number_field  :day
-      end
-
-      hidden_field :type_occurrence, {value: true}
-
-      div class: 'controls' do
-        submit 'Add', class: 'btn'
-      end
-    end
-  %></div>
+    %>
+    </div>
+  </div>
 <%= javascript 'form_toggle'%>

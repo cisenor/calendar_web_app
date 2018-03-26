@@ -1,3 +1,6 @@
+body {
+  font-family: sans-serif; }
+
 .bold {
   font-weight: 600; }
 
@@ -29,6 +32,26 @@
 
 body {
   box-sizing: border-box; }
+
+.wrapper {
+  width: 30%;
+  margin: 1em auto; }
+  .wrapper .radio-buttons {
+    display: flex;
+    justify-content: space-around; }
+  .wrapper .date-form form label {
+    display: block;
+    width: 100%; }
+  .wrapper .date-form form input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: .5em; }
+  .wrapper .date-form form .btn {
+    width: 100%;
+    height: 3em;
+    font-size: large;
+    line-height: 3em; }
 
 .year-container {
   display: flex;
@@ -71,14 +94,8 @@ body {
   background-image: -ms-linear-gradient(top, #256a97, #205c83);
   background-image: -o-linear-gradient(top, #256a97, #205c83);
   background-image: linear-gradient(to bottom, #256a97, #205c83);
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
   text-align: center;
   color: #ffffff;
-  font-size: 15px;
-  max-width: 10em;
-  flex: 0.3;
   text-decoration: none; }
 
 .btn:hover {
@@ -88,7 +105,8 @@ body {
   background-image: -ms-linear-gradient(top, #2c7eb4, #27709f);
   background-image: -o-linear-gradient(top, #2c7eb4, #27709f);
   background-image: linear-gradient(to bottom, #2c7eb4, #27709f);
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
 .date-container {
   border: 1px solid silver; }
