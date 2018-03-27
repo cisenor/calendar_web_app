@@ -3,7 +3,7 @@ require_relative '../../../../lib/calendar/models/year'
 
 describe Web::Controllers::Home::Index do
   let(:action) { Web::Controllers::Home::Index.new }
-  let(:params) { Hash[] }
+  let(:params) { Hash[year: 2018] }
   let(:important_dates) { CalendarEntryRepository.new }
 
   it 'is successful' do

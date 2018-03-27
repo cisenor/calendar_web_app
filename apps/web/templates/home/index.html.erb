@@ -1,4 +1,14 @@
-  <div class="header"><%= year.year %></div>
+  <div class="header">
+    <span class="year-control">
+      <%= previous_link %>
+    </span>
+    <span  id="title-year">
+      <%= year.year %>
+    </span>
+    <span class="year-control">
+      <%= next_link %>
+    </span>
+  </div>
   <div class="year">
   <div class="year-container">
     <% year.months.each do |month| %> 
