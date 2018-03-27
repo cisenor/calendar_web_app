@@ -77,11 +77,12 @@ body{
         display:block;
         width:100%;
       }
-      input {
+      input, select {
         width: 100%;
         display: block;
         box-sizing: border-box;
         margin-bottom: .5em;
+        font-size: medium;
       }
       .btn {
         width: 100%;

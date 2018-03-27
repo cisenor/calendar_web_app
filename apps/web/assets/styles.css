@@ -42,11 +42,12 @@ body {
   .wrapper .date-form form label {
     display: block;
     width: 100%; }
-  .wrapper .date-form form input {
+  .wrapper .date-form form input, .wrapper .date-form form select {
     width: 100%;
     display: block;
     box-sizing: border-box;
-    margin-bottom: .5em; }
+    margin-bottom: .5em;
+    font-size: medium; }
   .wrapper .date-form form .btn {
     width: 100%;
     height: 3em;

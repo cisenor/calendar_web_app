@@ -36,11 +36,11 @@ Hanami.configure do
 
   environment :development do
     # See: http://hanamirb.org/guides/projects/logging
-    logger level: :debug
+    logger level: :debug, stream: 'logs/hanami.log'
   end
 
   environment :production do
-    logger level: :info, formatter: :json, filter: []
+    logger level: :info, formatter: :json, filter: [], stream: 'logs/hanami.log'
 
     mailer do
       delivery :smtp, address: ENV['SMTP_HOST'], port: ENV['SMTP_PORT']
