@@ -1,15 +1,32 @@
 class CalendarEntryRepository < Hanami::Repository
   def style(day)
     return '' unless day.class == Date
-    return :leap if day.month == 2 && day.day == 29
-    return :friday13 if day.wday == 5 && day.day == 13
-    return :holiday if holiday day
-    :none
+    day_tag day
   end
 
   private
 
-  def holiday(day)
-    calendar_entries.where(month: day.month, day: day.day).to_a.any?
+  def day_tag(day)
+    return :leap if day.month == 2 && day.day == 29
+    return :friday13 if day.wday == 5 && day.day == 13
+    return :holiday if holiday? day
+    :none
+  end
+
+  def holiday?(day)
+    holiday = calendar_entries.where(month: day.month, day: day.day).to_a.any?
+    return holiday if holiday
+    occurrence? day
+  end
+
+  def occurrence?(day)
+    wkday = day.wday
+    # If the first weekday:
+    nth = (day.day / 7) + 1
+    calendar_entries.where(
+      month: day.month,
+      occurrence_week: nth,
+      occurrence_weekday: wkday
+    ).to_a.any?
   end
 end

@@ -1,0 +1,32 @@
+inherit_from: .rubocop_todo.yml
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'apps/web/application.rb'
+
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/IdenticalConditionalBranches:
+  Exclude:
+    - lib/calendar/formatters/format_factory.rb
+
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - apps/web/application.rb
+
+Style/SignalException:
+  Enabled: false
+
+Style/WordArray:
+  EnforcedStyle: percent
+  MinSize: 3
+  Exclude:
+    - apps/web/application.rb

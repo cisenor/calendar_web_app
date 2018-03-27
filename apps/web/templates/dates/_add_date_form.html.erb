@@ -1,0 +1,79 @@
+<div class="wrapper">
+  <div class="note">
+    <p>Add a date to the calendar using either a fixed date or an occurrence.</p>
+  </div>
+  <div class="radio-buttons">
+    <div>
+      <input type="radio" value="fixed" id="radio-fixed" name="date-type" checked />
+      <label for="radio-fixed">Fixed</label>
+    </div>
+    <div>
+      <input type="radio" id="radio-occurrence" value="occurrence" name="date-type">
+      <label for="radio-occurrence">Occurrence</label>
+    </div>
+  </div>
+  <div class="date-form" id="form-fixed">
+    <p>Create a fixed date.</p>
+    <%=
+      months = {January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12 }
+
+      form_for :calendar_entry_fixed, routes.create_path do
+        div class: 'input' do
+          label         :name
+          text_field    :name
+        end
+
+        div class: 'input' do
+          label         :month
+          select        :month, months
+        end
+
+        div class: 'input' do
+          label         :day
+          number_field  :day, {value: 1, step: 1, min: 1, max: 31}
+        end
+
+        div class: 'controls' do
+          submit 'Add fixed date', class: 'btn'
+        end
+      end
+    %>
+  </div>
+  <div class="date-form" style="display:none" id="form-occurrence">
+
+    <p>Create a date by occurrence.</p>
+    <%=
+      form_for :calendar_entry_occurrence, routes.create_occurrence_path do
+        weekdays = {Sunday: 0, Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5, Saturday: 6 }
+        months = {January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12 }
+
+        div class: 'input' do
+          label         :name
+          text_field    :name
+        end
+
+        div class: 'input' do
+          label         :month
+          select        :month, months
+        end
+
+        div class: 'input' do
+          label         :occurrence_week
+          number_field  :occurrence_week, {value: 1, step: 1, min: 1, max: 6}
+        end
+
+        div class: 'input' do
+          # {Sunday: 0, Monday: 1, Tuesday:2, Wednesday: 3, Thursday: 4, Friday:5, Saturday: 6 }
+          label         :occurrence_weekday
+          select        :occurrence_weekday, weekdays
+        end
+
+        div class: 'controls' do
+          submit 'Add date', class: 'btn'
+        end
+      end
+    %>
+    </div>
+  </div>
+<%= javascript 'form_toggle'%>
+<%= javascript 'form_values'%>
