@@ -14,4 +14,18 @@ describe 'Show calendar' do
       assert page.find('#title-year').text == '2017'
     end
   end
+
+  it 'advances to the next year when the next button is clicked' do
+    visit '/'
+    assert page.find('#title-year').text == '2018'
+    page.find('#next-year').click()
+    assert page.find('#title-year').text == '2019'
+  end
+
+  it 'returns to the previous year when the previous button is clicked' do
+    visit '/'
+    assert page.find('#title-year').text == '2018'
+    page.find('#previous-year').click()
+    assert page.find('#title-year').text == '2017'
+  end
 end
