@@ -1,4 +1,4 @@
-<div class='title'>Important Dates</div>
+<div class='header'>Important Dates</div>
 <% if entry_list.all.any? %>
   <ul>
     <% entry_list.all.each do |entry| %>
@@ -8,3 +8,6 @@
 <% else %>
   <div>There are no calendar entries stored.</div>
 <% end %>
+<div class="controls">
+  <%= link_to('Add a date', routes.path(:add_date), class: 'btn') %>
+</div>

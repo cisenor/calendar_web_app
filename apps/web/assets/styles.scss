@@ -1,17 +1,40 @@
+$primary-color:       #256a97;
+$holiday-color:       #9ee49e;
+$leap-day-color:      #7efff9;
+$friday-the-13-color: #fda9a9;
+$border-color:        silver;
+$list-odd-color:      #f5f5f5;
+$date-container-height: 3rem;
+$base-font: sans-serif;
+
+@mixin gradient($color){
+  background: $color;
+  $gradient-percent: 5%;
+  background-image: -webkit-linear-gradient(top, $color, darken($color, $gradient-percent));
+  background-image: -moz-linear-gradient(top, $color,  darken($color, $gradient-percent));
+  background-image: -ms-linear-gradient(top,  $color,  darken($color, $gradient-percent));
+  background-image: -o-linear-gradient(top,  $color,  darken($color, $gradient-percent));
+  background-image: linear-gradient(to bottom, $color,  darken($color, $gradient-percent));
+}
+
+body {
+  font-family: $base-font;
+}
+
 .bold {
   font-weight: 600;
 }
 
 .holiday {
-  background-color: #9ee49e;
+  background-color: $holiday-color;
 }
 
 .leap-day {
-  background-color: #7efff9;
+  background-color: $leap-day-color;
 }
 
 .friday-13 {
-  background-color: #fda9a9;
+  background-color: $friday-the-13-color;
 }
 
 .centered {
@@ -21,6 +44,7 @@
 .header {
   width: 100%;
   font-size: xx-large;
+  text-align: center;
 }
 
 .title {
@@ -35,10 +59,48 @@
   flex: 1;
 }
 
+body{
+  box-sizing: border-box;
+}
+
+// Date Add.
+.wrapper {
+  width: 30%;
+  margin: 1em auto;
+  .radio-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+  .date-form {
+    form {
+      label{
+        display:block;
+        width:100%;
+      }
+      input, select {
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        margin-bottom: .5em;
+        font-size: medium;
+      }
+      .btn {
+        width: 100%;
+        height: 3em;
+        font-size:large;
+        line-height: 3em;
+      }
+    }
+  }
+}
+
 .year-container {  
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  border: 1px solid $border-color;
+  border-right: none;
+  padding: .25rem;
   width: 75%;
   .month {
     width: 15em;
@@ -66,6 +128,59 @@
         flex: 1;
         text-align: center;
       }
+    }
+  }
+}
+.controls{
+  width:100%;
+}
+.btn {
+  @include gradient($primary-color);
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.btn:hover {
+  @include gradient(lighten($primary-color,7%));
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.date-container {
+  border: 1px solid $border-color;
+  .header{
+    font-size: large;
+    height: $date-container-height;
+    line-height: $date-container-height;
+  }
+  .btn{
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    box-sizing: border-box;
+    height: $date-container-height;
+    display:block;
+    line-height: $date-container-height;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: calc(100% - ($date-container-height * 2));
+    overflow-y: scroll;
+    overflow-x: hidden;
+    li {
+      height:$date-container-height;
+      line-height: $date-container-height;
+      width:100%;
+      padding-left: .4em;
+    }
+    li:nth-child(odd){
+      background-color: $list-odd-color;
+    }
+    li:nth-child(even){
+      background-color: darken($list-odd-color, 5%);
     }
   }
 }
