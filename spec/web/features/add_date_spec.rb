@@ -43,9 +43,12 @@ describe 'Add a new date' do
         select 'Monday', from: 'Occurrence weekday', visible: false
         click_button 'Add date', visible: false
       end
-      assert page.status_code == 200, 'Should be a 200, got ' + page.status_code.to_s
+      assert page.status_code == 200
       current_path.must_equal '/'
       assert page.has_content? '2018-04-02 - Easter'
+
+      easter_xpath = '/html/body/div[3]/div[1]/div[4]/div[3]/span[2]'
+      assert find(easter_xpath)[:class].include?('holiday')
     end
   end
 end
