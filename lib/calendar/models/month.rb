@@ -14,19 +14,7 @@ class Month
     d = Date.civil(@year, @month, -1)
     @last_day = d.day
     @name = Date::MONTHNAMES[@month]
-    create_weeks
-  end
-
-  ##
-  # Returns the Nth occurrence of the requested weekday or nil if not available
-  def nth_weekday_of_month(nth, weekday)
-    index = 1
-    weeks.each do |week|
-      next unless week[weekday]
-      return week[weekday] if index == nth
-      index += 1
-    end
-    nil
+    @weeks = create_weeks
   end
 
   ##
@@ -42,10 +30,11 @@ class Month
   private
 
   def create_weeks
-    @weeks = []
+    weeks = []
     days = (1..@last_day).map { |day| Date.new(@year, @month, day) }
-    @weeks << create_first_week(days)
-    @weeks << days.shift(7) until days.empty?
+    weeks << create_first_week(days)
+    weeks << days.shift(7) until days.empty?
+    weeks
   end
 
   def create_first_week(days)
