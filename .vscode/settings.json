@@ -30,6 +30,7 @@
     "Gemfile*":true,
     "Rakefile":true,
     "config.ru":true,
-    ".hanamirc":true
+    ".hanamirc":true,
+    "logs":true
   }
 }
