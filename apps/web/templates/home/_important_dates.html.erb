@@ -1,8 +1,8 @@
 <div class='header'>Important Dates</div>
 <% if entry_list.all.any? %>
-  <ul>
+  <ul id="entry-list">
     <% entry_list.all.each do |entry| %>
-      <li><%= entry.display year.year %></li>
+      <li><a>delete</a><%= entry.display year.year %></li>
     <% end %>
   </ul>
 <% else %>
