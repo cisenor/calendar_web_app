@@ -2,7 +2,11 @@
 <% if entry_list.all.any? %>
   <ul id="entry-list">
     <% entry_list.all.each do |entry| %>
-      <li><%= link_to 'dates/delete/' + entry.id.to_s %><%= entry.display year.year %></li>
+      <li><%= 
+      link_to('dates/delete/' + entry.id.to_s) do
+        image('remove.png')
+      end
+      %><%= entry.display year.year %></li>
     <% end %>
   </ul>
 <% else %>
