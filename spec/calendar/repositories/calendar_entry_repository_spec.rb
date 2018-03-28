@@ -57,6 +57,6 @@ describe CalendarEntryRepository do
   it 'returns false if the provided entry can\'t be found' do
     repo.clear
     assert repo.delete_by_fixed('', 12, 22) == false
-    assert repo.delete_by_occurrence('', 12, 1, 1)
+    assert repo.delete_by_occurrence('', 12, 1, 1) == false
   end
 end
