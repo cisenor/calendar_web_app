@@ -9,6 +9,10 @@ class CalendarEntry < Hanami::Entity
     date(year).to_s + ' - ' + name
   end
 
+  def delete
+    p 'clicked!'
+  end
+
   private
 
   def fixed?
