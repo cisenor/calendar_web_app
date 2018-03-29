@@ -29,5 +29,4 @@ class CalendarEntryRepository < Hanami::Repository
       occurrence_weekday: wkday
     ).to_a.any?
   end
-
 end
