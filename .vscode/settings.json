@@ -32,5 +32,6 @@
     "config.ru":true,
     ".hanamirc":true,
     "logs":true
-  }
+  },
+  "emmet.includeLanguages": {"erb": "html"}
 }
