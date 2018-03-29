@@ -1,0 +1,15 @@
+@mixin gradient($color) {
+  background: $color;
+  $gradient-percent: 5%;
+  background-image: -webkit-gradient(
+    linear,
+    left top, left bottom,
+    from($color),
+    to(darken($color, $gradient-percent))
+  );
+  background-image: linear-gradient(
+    to bottom,
+    $color,
+    darken($color, $gradient-percent)
+  );
+}
