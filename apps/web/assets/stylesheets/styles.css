@@ -1,37 +1,54 @@
-body {
-  font-family: sans-serif; }
+.wrapper {
+  width: 30%;
+  margin: 1em auto; }
 
-.bold {
-  font-weight: 600; }
+.radio-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around; }
 
-.holiday {
-  background-color: #9ee49e; }
+.date-form label {
+  display: block;
+  width: 100%; }
+.date-form input,
+.date-form select {
+  width: 100%;
+  display: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  font-size: medium; }
+.date-form .btn {
+  width: 100%;
+  height: 3em;
+  font-size: large;
+  line-height: 3em; }
 
-.leap-day {
-  background-color: #7efff9; }
-
-.friday-13 {
-  background-color: #fda9a9; }
-
-.centered {
-  text-align: center; }
+html {
+  background: #f8f7ff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f8f7ff), to(#ebe8ff));
+  background-image: linear-gradient(to bottom, #f8f7ff, #ebe8ff);
+  height: 100%; }
 
 .header {
   width: 100%;
   font-size: xx-large;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   line-height: 2rem;
   margin-bottom: 0.25rem; }
   .header .year-control {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1; }
     .header .year-control a {
-      background: #b7b9b1;
-      background-image: -webkit-linear-gradient(top, #b7b9b1, #abada4);
-      background-image: -moz-linear-gradient(top, #b7b9b1, #abada4);
-      background-image: -ms-linear-gradient(top, #b7b9b1, #abada4);
-      background-image: -o-linear-gradient(top, #b7b9b1, #abada4);
-      background-image: linear-gradient(to bottom, #b7b9b1, #abada4);
+      background: #9ea4b6;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#9ea4b6), to(#959caf));
+      background-image: linear-gradient(to bottom, #9ea4b6, #959caf);
       color: inherit;
       padding: 0;
       margin: auto;
@@ -44,107 +61,82 @@ body {
     .header .year-control img {
       width: 2rem; }
   .header #title-year {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1; }
 
-.title {
-  text-align: center; }
-
-.year {
+.calendar {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex; }
-
-.date-container {
-  flex: 1; }
-
-body {
-  box-sizing: border-box; }
-
-.wrapper {
-  width: 30%;
-  margin: 1em auto; }
-  .wrapper .radio-buttons {
-    display: flex;
-    justify-content: space-around; }
-  .wrapper .date-form form label {
-    display: block;
-    width: 100%; }
-  .wrapper .date-form form input,
-  .wrapper .date-form form select {
-    width: 100%;
-    display: block;
-    box-sizing: border-box;
-    margin-bottom: 0.5em;
-    font-size: medium; }
-  .wrapper .date-form form .btn {
-    width: 100%;
-    height: 3em;
-    font-size: large;
-    line-height: 3em; }
 
 .year-wrapper {
   border: 1px solid silver;
   border-right: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
   width: 75%; }
-  .year-wrapper .year-container {
-    display: flex;
+
+.year-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-around;
+  padding: 0.25rem;
+  max-width: 64rem; }
+
+.month {
+  width: 15em;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  margin-top: 1rem; }
+  .month .month-name {
+    text-align: center;
+    font-size: larger;
+    background: #256a97;
+    color: white; }
+  .month .week-header {
+    width: 100%;
+    height: 2em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .month .week-header span {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      text-align: center; }
+
+.week {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 2em; }
+  .week span {
+    max-width: calc(100% / 7);
+    padding-top: 0.4rem;
+    border-radius: 1em;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0.25rem;
-    max-width: 80%; }
-    .year-wrapper .year-container .month {
-      width: 15em;
-      flex-grow: 0;
-      margin-bottom: 1rem; }
-      .year-wrapper .year-container .month .month-name {
-        text-align: center;
-        font-size: larger;
-        background: #256a97;
-        color: white; }
-      .year-wrapper .year-container .month .week-header {
-        width: 100%;
-        height: 2em;
-        display: flex; }
-        .year-wrapper .year-container .month .week-header span {
-          flex: 1;
-          text-align: center; }
-      .year-wrapper .year-container .month .week {
-        display: flex;
-        height: 2em; }
-        .year-wrapper .year-container .month .week span {
-          max-width: calc(100% / 7);
-          padding-top: 0.4rem;
-          border-radius: 1em;
-          flex: 1;
-          text-align: center; }
-
-.controls {
-  width: 100%; }
-
-.btn {
-  background: #256a97;
-  background-image: -webkit-linear-gradient(top, #256a97, #205c83);
-  background-image: -moz-linear-gradient(top, #256a97, #205c83);
-  background-image: -ms-linear-gradient(top, #256a97, #205c83);
-  background-image: -o-linear-gradient(top, #256a97, #205c83);
-  background-image: linear-gradient(to bottom, #256a97, #205c83);
-  text-align: center;
-  color: #ffffff;
-  text-decoration: none; }
-
-.btn:hover {
-  background: #2c7eb4;
-  background-image: -webkit-linear-gradient(top, #2c7eb4, #27709f);
-  background-image: -moz-linear-gradient(top, #2c7eb4, #27709f);
-  background-image: -ms-linear-gradient(top, #2c7eb4, #27709f);
-  background-image: -o-linear-gradient(top, #2c7eb4, #27709f);
-  background-image: linear-gradient(to bottom, #2c7eb4, #27709f);
-  text-decoration: none;
-  cursor: pointer; }
+    text-align: center; }
 
 .date-container {
-  border: 1px solid silver; }
+  border: 1px solid silver;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
   .date-container .header {
     font-size: large;
     height: 3rem;
@@ -153,6 +145,7 @@ body {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     height: 3rem;
     display: block;
@@ -168,15 +161,41 @@ body {
       height: 3rem;
       line-height: 3rem;
       width: 100%;
-      padding-left: 0.4em; }
+      padding-left: 0.4em;
+      background-color: #f3f6ff; }
       .date-container ul li a {
         text-decoration: none; }
         .date-container ul li a img {
           width: 1rem;
           vertical-align: text-top; }
-    .date-container ul li:nth-child(odd) {
-      background-color: #f5f5f5; }
     .date-container ul li:nth-child(even) {
-      background-color: #e8e8e8; }
+      background-color: #dae3ff; }
+
+.btn {
+  background: #256a97;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#256a97), to(#22618b));
+  background-image: linear-gradient(to bottom, #256a97, #22618b);
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none; }
+
+.btn:hover {
+  background: #2c7eb4;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2c7eb4), to(#2976a7));
+  background-image: linear-gradient(to bottom, #2c7eb4, #2976a7);
+  text-decoration: none;
+  cursor: pointer; }
+
+.holiday {
+  background-color: #9ee49e; }
+
+.leap-day {
+  background-color: #7efff9; }
+
+.friday-13 {
+  background-color: #fda9a9; }
+
+body {
+  font-family: sans-serif; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -15,7 +15,7 @@ describe Web::Views::Home::Index do
   let(:rendered)  { view.render }
 
   it 'has 1 year on the index page' do
-    rendered.scan('class="year"').count.must_equal 1
+    rendered.scan('class="year-wrapper"').count.must_equal 1
   end
 
   it 'has 12 months on the index page' do

@@ -1,0 +1,12 @@
+.btn {
+  @include gradient($color-primary);
+  text-align: center;
+  color: $color-text-secondary;
+  text-decoration: none;
+}
+
+.btn:hover {
+  @include gradient(lighten($color-primary, 7%));
+  text-decoration: none;
+  cursor: pointer;
+}

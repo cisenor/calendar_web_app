@@ -1,0 +1,46 @@
+.date-container {
+  border: 1px solid $border-color;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  .header {
+    font-size: large;
+    height: $date-container-height;
+    line-height: $date-container-height;
+  }
+  .btn {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    height: $date-container-height;
+    display: block;
+    line-height: $date-container-height;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: calc(100% - ($date-container-height * 2));
+    overflow-y: scroll;
+    overflow-x: hidden;
+    li {
+      height: $date-container-height;
+      line-height: $date-container-height;
+      width: 100%;
+      padding-left: 0.4em;
+      background-color: $list-back-color;
+      a {
+        text-decoration: none;
+        img {
+          width: 1rem;
+          vertical-align: text-top;
+        }
+      }
+    }
+    li:nth-child(even) {
+      background-color: darken($list-back-color, 5%);
+    }
+  }
+}
