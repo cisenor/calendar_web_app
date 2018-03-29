@@ -1,6 +1,6 @@
 @mixin gradient($color) {
   background: $color;
-  $gradient-percent: 5%;
+  $gradient-percent: 3%;
   background-image: -webkit-gradient(
     linear,
     left top, left bottom,
