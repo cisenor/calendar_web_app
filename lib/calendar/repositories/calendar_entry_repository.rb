@@ -4,6 +4,14 @@ class CalendarEntryRepository < Hanami::Repository
     day_tag day
   end
 
+  def sorted(year)
+    calendar_entries.to_a.sort do |a, b|
+      diff = a.date(year) - b.date(year)
+      next diff unless diff.zero?
+      a.name.casecmp b.name
+    end
+  end
+
   private
 
   def day_tag(day)

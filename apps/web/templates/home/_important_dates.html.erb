@@ -1,7 +1,7 @@
 <div class='header'>Important Dates</div>
 <% if entry_list.all.any? %>
   <ul id="entry-list">
-    <% entry_list.all.each do |entry| %>
+    <% entry_list.sorted(year.year).each do |entry| %>
       <li><%= 
       link_to('dates/delete/' + entry.id.to_s) do
         image('remove.png')
