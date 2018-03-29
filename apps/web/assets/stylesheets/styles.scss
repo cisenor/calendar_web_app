@@ -222,6 +222,12 @@ body {
       line-height: $date-container-height;
       width: 100%;
       padding-left: 0.4em;
+      a {
+          img {
+            width: 1rem;
+            vertical-align: text-top;
+          }
+      }
     }
     li:nth-child(odd) {
       background-color: $list-odd-color;
