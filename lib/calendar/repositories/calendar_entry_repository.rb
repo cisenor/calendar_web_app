@@ -4,30 +4,7 @@ class CalendarEntryRepository < Hanami::Repository
     day_tag day
   end
 
-  def delete_by_fixed(entry_name, entry_month, entry_day)
-    found = find_by_fixed(entry_name, entry_month, entry_day)
-    return false unless found
-    delete(found.id)
-  end
-
-  def delete_by_occurrence(entry_name, entry_month, occurrence_week, occurrence_weekday)
-    found = find_by_occurrence(entry_name, entry_month, occurrence_week, occurrence_weekday)
-    return false unless found
-    delete(found.id)
-  end
-
   private
-
-  def find_by_fixed(entry_name, entry_month, entry_day)
-    calendar_entries.where(name: entry_name, month: entry_month, day: entry_day).first
-  end
-
-  def find_by_occurrence(entry_name, entry_month, occurrence_week, occurrence_weekday)
-    calendar_entries.where(name: entry_name,
-                           month: entry_month,
-                           occurrence_week: occurrence_week,
-                           occurrence_weekday: occurrence_weekday).first
-  end
 
   def day_tag(day)
     return :leap if day.month == 2 && day.day == 29
