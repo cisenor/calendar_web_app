@@ -95,7 +95,8 @@ body {
     max-width: 80%; }
     .year-wrapper .year-container .month {
       width: 15em;
-      flex-grow: 0; }
+      flex-grow: 0;
+      margin-bottom: 1rem; }
       .year-wrapper .year-container .month .month-name {
         text-align: center;
         font-size: larger;
