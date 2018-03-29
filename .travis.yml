@@ -1,8 +1,6 @@
 language: ruby
 rvm:
-  - 2.2
-  - jruby
-  - 2.0.0-p247
+  - 2.3
 
 install: bundle install --jobs=3 --retry=3
 
