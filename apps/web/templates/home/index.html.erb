@@ -10,10 +10,12 @@
     </span>
   </div>
   <div class="year">
-  <div class="year-container">
-    <% year.months.each do |month| %> 
-      <%= render partial: 'home/month', locals: { month: month } %>
-    <% end %>
+  <div class="year-wrapper">
+    <div class="year-container">
+      <% year.months.each do |month| %> 
+        <%= render partial: 'home/month', locals: { month: month } %>
+      <% end %>
+    </div>
   </div>
   <div class="date-container">
      <%= render partial: 'home/important_dates'%>

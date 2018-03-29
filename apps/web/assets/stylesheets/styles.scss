@@ -77,15 +77,15 @@ body {
       color: inherit;
       padding: 0;
       margin: auto;
-      width:  $year-button-size;
+      width: $year-button-size;
       display: block;
       border-radius: 3rem;
-      line-height:  $year-button-size;
-      height:  $year-button-size;
+      line-height: $year-button-size;
+      height: $year-button-size;
       text-decoration: none;
     }
     img {
-      width:  $year-button-size;
+      width: $year-button-size;
     }
   }
   #title-year {
@@ -141,39 +141,47 @@ body {
   }
 }
 
-.year-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  border: 1px solid $border-color;
-  border-right: none;
-  padding: 0.25rem;
-  width: 75%;
-  .month {
-    width: 15em;
-    flex-grow: 0;
-    .month-name {
-      font-size: large;
-      text-align: center;
-    }
-    .week-header {
-      width: 100%;
-      height: 2em;
-      display: flex;
-      span {
-        flex: 1;
+.year-wrapper {
+    border: 1px solid $border-color;
+    border-right: none;
+    display: flex;
+    justify-content: space-around;
+    width: 75%;
+  .year-container {
+    display: flex;
+    flex:1;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0.25rem;
+    max-width: 80%;
+    .month {
+      width: 15em;
+      flex-grow: 0;
+      .month-name {
         text-align: center;
+        font-size: larger;
+        background: $primary-color;
+        color: white;
       }
-    }
-    .week {
-      display: flex;
-      height: 2em;
-      span {
-        max-width: calc(100% / 7);
-        padding-top: 0.4rem;
-        border-radius: 1em;
-        flex: 1;
-        text-align: center;
+      .week-header {
+        width: 100%;
+        height: 2em;
+        display: flex;
+        span {
+          flex: 1;
+          text-align: center;
+        }
+      }
+      .week {
+        display: flex;
+        height: 2em;
+        span {
+          max-width: calc(100% / 7);
+          padding-top: 0.4rem;
+          border-radius: 1em;
+          flex: 1;
+          text-align: center;
+        }
       }
     }
   }
@@ -223,10 +231,11 @@ body {
       width: 100%;
       padding-left: 0.4em;
       a {
-          img {
-            width: 1rem;
-            vertical-align: text-top;
-          }
+        text-decoration: none;
+        img {
+          width: 1rem;
+          vertical-align: text-top;
+        }
       }
     }
     li:nth-child(odd) {

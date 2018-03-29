@@ -1,5 +1,12 @@
 language: ruby
 rvm:
- - 2.3
- - jruby
- - rbx-3
+  - 2.3
+
+install: bundle install --jobs=3 --retry=3
+
+script:
+  - 'HANAMI_ENV=test bundle exec hanami db create'
+  - 'HANAMI_ENV=test bundle exec hanami db migrate'
+  - 'bundle exec rake test'
+
+  
