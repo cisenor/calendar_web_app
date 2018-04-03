@@ -1,7 +1,7 @@
 class CalendarEntryRepository < Hanami::Repository
-  def style(day)
-    return '' unless day.class == Date
-    day_tag day
+  def style(date)
+    return :none unless date.class == Date
+    day_tag date
   end
 
   def sorted(year)
@@ -14,25 +14,25 @@ class CalendarEntryRepository < Hanami::Repository
 
   private
 
-  def day_tag(day)
-    return :leap if day.month == 2 && day.day == 29
-    return :friday13 if day.wday == 5 && day.day == 13
-    return :holiday if holiday? day
+  def day_tag(date)
+    return :leap if date.month == 2 && date.day == 29
+    return :friday13 if date.wday == 5 && date.day == 13
+    return :holiday if holiday? date
     :none
   end
 
-  def holiday?(day)
-    holiday = calendar_entries.where(month: day.month, day: day.day).to_a.any?
+  def holiday?(date)
+    holiday = calendar_entries.where(month: date.month, day: date.day).to_a.any?
     return holiday if holiday
-    occurrence? day
+    occurrence? date
   end
 
-  def occurrence?(day)
-    wkday = day.wday
+  def occurrence?(date)
+    wkday = date.wday
     # If the first weekday:
-    nth = (day.day / 7) + 1
+    nth = ((date.day - 1) / 7) + 1
     calendar_entries.where(
-      month: day.month,
+      month: date.month,
       occurrence_week: nth,
       occurrence_weekday: wkday
     ).to_a.any?
