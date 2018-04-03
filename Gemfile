@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'hanami',       '~> 1.1'
 gem 'hanami-model', '~> 1.1'
+gem 'minitest-reporters'
 gem 'rake'
 
 gem 'sqlite3'

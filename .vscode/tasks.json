@@ -31,7 +31,7 @@
         "test"
       ],
       "presentation": {
-        "panel": "dedicated"
+        "panel": "shared"
       },
       "group": {
         "kind": "test",

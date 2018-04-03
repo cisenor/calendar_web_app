@@ -1,9 +1,9 @@
 require_relative '../../../spec_helper'
 
-describe Web::Views::::Date do
+describe Web::Views::Date::Display do
   let(:exposures) { Hash[format: :html] }
-  let(:template)  { Hanami::View::Template.new('apps/web/templates/date.html.erb') }
-  let(:view)      { Web::Views::::Date.new(template, exposures) }
+  let(:template)  { Hanami::View::Template.new('apps/web/templates/date/display.html.erb') }
+  let(:view)      { Web::Views::Date::Display.new(template, exposures) }
   let(:rendered)  { view.render }
 
   it 'exposes #format' do
