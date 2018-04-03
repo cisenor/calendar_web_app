@@ -12,3 +12,4 @@ post '/dates/create_occurrence',
      to: 'dates#create_occurrence',
      as: :create_occurrence
 get '/dates/delete/:id', id: /\d+/, to: 'dates#delete'
+get '/', to: '#date'
