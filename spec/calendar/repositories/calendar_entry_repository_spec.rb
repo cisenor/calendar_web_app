@@ -30,6 +30,14 @@ describe CalendarEntryRepository do
     assert style_tag == :holiday, 'expected holiday, got ' + style_tag.to_s
   end
 
+  it 'can check occurrence properly with 0th weekday' do
+    repo.clear
+    easter = repo.create(name: 'Easter', month: 4, occurrence_week: 1, occurrence_weekday: 0)
+    edate = easter.date 2024
+    style_tag = repo.style(edate)
+    assert style_tag == :holiday, 'expected holiday, got ' + style_tag.to_s
+  end
+
   it 'sorts calendar entries by date' do
     repo.clear
     e2 = repo.create(name: 'Easter2', month: 4, occurrence_week: 1, occurrence_weekday: 1)
