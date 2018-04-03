@@ -16,4 +16,5 @@ get '/date/:year/:month/:day',
     year: /\d{4}/,
     month: /\d{1,2}/,
     day: /\d{1,2}/,
-    to: 'date#display'
+    to: 'date#display',
+    as: :display_date

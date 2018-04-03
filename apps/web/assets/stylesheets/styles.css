@@ -41,25 +41,10 @@ html {
   display: flex;
   line-height: 2rem;
   margin-bottom: 0.25rem; }
-  .header .year-control {
+  .header .title-control {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1; }
-    .header .year-control a {
-      background: #9ea4b6;
-      background-image: -webkit-gradient(linear, left top, left bottom, from(#9ea4b6), to(#959caf));
-      background-image: linear-gradient(to bottom, #9ea4b6, #959caf);
-      color: inherit;
-      padding: 0;
-      margin: auto;
-      width: 2rem;
-      display: block;
-      border-radius: 3rem;
-      line-height: 2rem;
-      height: 2rem;
-      text-decoration: none; }
-    .header .year-control img {
-      width: 2rem; }
   .header #title-year {
     -webkit-box-flex: 1;
     -ms-flex: 1;
@@ -104,6 +89,7 @@ html {
   .month .month-name {
     text-align: center;
     font-size: larger;
+    margin-bottom: 1rem;
     background: #256a97;
     color: white; }
   .month .week-header {
@@ -123,7 +109,9 @@ html {
   display: -ms-flexbox;
   display: flex;
   height: 2em; }
-  .week span {
+  .week a {
+    text-decoration: none;
+    color: inherit;
     max-width: calc(100% / 7);
     padding-top: 0.4rem;
     border-radius: 1em;
@@ -186,6 +174,23 @@ html {
   text-decoration: none;
   cursor: pointer; }
 
+.nav-button {
+  line-height: 2rem;
+  text-decoration: none;
+  background: #9ea4b6;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#9ea4b6), to(#959caf));
+  background-image: linear-gradient(to bottom, #9ea4b6, #959caf);
+  border-radius: 3rem;
+  color: inherit;
+  padding: 0;
+  margin: auto;
+  width: 2rem;
+  height: 2rem;
+  display: block;
+  flex: 1; }
+  .nav-button img {
+    width: 2rem; }
+
 .holiday {
   background-color: #9ee49e; }
 
@@ -194,6 +199,25 @@ html {
 
 .friday-13 {
   background-color: #fda9a9; }
+
+.title {
+  flex: 1; }
+
+.day-planner .entry-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: center; }
+.day-planner .display-entry {
+  border-radius: 1rem;
+  padding: .25rem;
+  max-width: 8rem;
+  flex: 1;
+  text-overflow: ellipsis;
+  text-align: center;
+  background-color: #256a97;
+  color: #ffffff; }
 
 body {
   font-family: sans-serif; }

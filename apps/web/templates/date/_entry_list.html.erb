@@ -1,0 +1,7 @@
+<% if entries.any? %>
+  <div class="entry-list">
+  <% entries.each do |entry| %>
+    <span class="display-entry"><%= entry.name %></span>
+  <% end %>
+  </div>
+<% end %>

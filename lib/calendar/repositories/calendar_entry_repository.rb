@@ -1,6 +1,6 @@
 class CalendarEntryRepository < Hanami::Repository
   def style(date)
-    return :none unless date.class == Date
+    return ':none' unless date.class == Date
     day_tag date
   end
 
@@ -10,6 +10,11 @@ class CalendarEntryRepository < Hanami::Repository
       next diff unless diff.zero?
       a.name.casecmp b.name
     end
+  end
+
+  def entry_by_date(date)
+    holidays = get_holidays(date)
+    holidays.concat get_occurrences(date)
   end
 
   private
@@ -22,12 +27,16 @@ class CalendarEntryRepository < Hanami::Repository
   end
 
   def holiday?(date)
-    holiday = calendar_entries.where(month: date.month, day: date.day).to_a.any?
+    holiday = get_holidays(date).any?
     return holiday if holiday
     occurrence? date
   end
 
   def occurrence?(date)
+    get_occurrences(date).to_a.any?
+  end
+
+  def get_occurrences(date)
     wkday = date.wday
     # If the first weekday:
     nth = ((date.day - 1) / 7) + 1
@@ -35,6 +44,10 @@ class CalendarEntryRepository < Hanami::Repository
       month: date.month,
       occurrence_week: nth,
       occurrence_weekday: wkday
-    ).to_a.any?
+    ).to_a
+  end
+
+  def get_holidays(date)
+    calendar_entries.where(month: date.month, day: date.day).to_a
   end
 end

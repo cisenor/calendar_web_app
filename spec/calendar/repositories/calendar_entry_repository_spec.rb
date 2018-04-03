@@ -49,4 +49,14 @@ describe CalendarEntryRepository do
     sorted = repo.sorted(2018)
     sorted.must_equal [nyday, e1, e2, christmas, boxing, nye]
   end
+
+  it 'returns a calendar entry when provided a date object' do
+    repo.clear
+    nye = repo.create(name: 'New Year\s Eve', month: 12, day: 31)
+    nye_date = Date.new(2018, 12, 31)
+    entries = repo.entry_by_date(nye_date)
+    entries.wont_be_empty
+    entries.first.month.must_equal nye.month
+    entries.first.day.must_equal nye.day
+  end
 end
