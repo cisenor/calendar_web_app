@@ -2,7 +2,8 @@
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
   "version": "2.0.0",
-  "tasks": [{
+  "tasks": [
+    {
       "label": "Sass Compile",
       "type": "shell",
       "command": "sass apps/web/assets/stylesheets/styles.scss apps/web/assets/stylesheets/styles.css",
@@ -22,9 +23,18 @@
       }
     },
     {
+      "label": "Format ERB",
+      "type": "shell",
+      "command": "htmlbeautifier",
+      "args": [
+        "apps/web/templates/**/*.erb"
+      ],
+      "problemMatcher": []
+    },
+    {
       "label": "Test",
       "type": "shell",
-      "command": "bundle",      
+      "command": "bundle",
       "args": [
         "exec",
         "rake",

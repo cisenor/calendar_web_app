@@ -40,7 +40,6 @@
     %>
   </div>
   <div class="date-form" style="display:none" id="form-occurrence">
-
     <p>Create a date by occurrence.</p>
     <%=
       form_for :calendar_entry_occurrence, routes.create_occurrence_path do
@@ -73,7 +72,7 @@
         end
       end
     %>
-    </div>
   </div>
+</div>
 <%= javascript 'form_toggle'%>
 <%= javascript 'form_values'%>

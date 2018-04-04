@@ -18,6 +18,13 @@ module Web::Views::Date
       end
     end
 
+    def home
+      url = routes.root_path(year: date.year)
+      link_to(url, class: 'nav-button') do
+        image('home.png')
+      end
+    end
+
     def header
       css = 'title ' + formatter.style(repo.style(date))
       title = date.strftime('%B %-d, %Y')

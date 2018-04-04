@@ -16,7 +16,8 @@
   },
   "triggerTaskOnSave.tasks": {
     "Test": ["**/*.rb"],
-    "Sass Compile": ["**/*.scss"]
+    "Sass Compile": ["**/*.scss"],
+    "Format ERB": ["**/*.erb"]
   },
   "triggerTaskOnSave.restart": false,
   "files.exclude": {
