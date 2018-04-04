@@ -10,3 +10,21 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+
+.nav-button {
+  line-height: $title-control-button-size;;
+  text-decoration: none;
+  @include gradient($color-secondary);
+  border-radius: .1rem;
+  color: inherit;
+  padding:0;
+  margin: auto;
+  width: 4rem;
+  height:$title-control-button-size;
+  display: block;
+  flex:1;
+  img {
+    width: $title-control-button-size;
+  }
+}

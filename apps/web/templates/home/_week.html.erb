@@ -1,7 +1,7 @@
 <div class="week">
   <% week.each do |day| %>
-      <% if day %>
-    <span class="<%= style(day) %>"><%= day.day %></span>
+    <% if day %>
+      <%= link_to( day.day.to_s, routes.display_date_path(year: day.year, month: day.month, day: day.day) , class: style(day)) %>
     <% else %>
       <span></span>
     <% end %>

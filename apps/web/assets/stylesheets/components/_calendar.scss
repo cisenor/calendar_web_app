@@ -37,6 +37,7 @@
   .month-name {
     text-align: center;
     font-size: larger;
+    margin-bottom: 1rem;
     background: $color-primary;
     color: white;
   }
@@ -59,7 +60,9 @@
   display: -ms-flexbox;
   display: flex;
   height: 2em;
-  span {
+  a {
+    text-decoration: none;
+    color: inherit;
     max-width: calc(100% / 7);
     padding-top: 0.4rem;
     border-radius: 1em;

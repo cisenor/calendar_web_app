@@ -9,27 +9,12 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  line-height: $year-control-button-size;
+  line-height: $title-control-button-size;
   margin-bottom: 0.25rem;  
-  .year-control {
+  .title-control {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    a {
-      @include gradient($color-secondary);
-      color: inherit;
-      padding: 0;
-      margin: auto;
-      width: $year-control-button-size;
-      display: block;
-      border-radius: 3rem;
-      line-height: $year-control-button-size;
-      height: $year-control-button-size;
-      text-decoration: none;
-    }
-    img {
-      width: $year-control-button-size;
-    }
   }
   #title-year {
     -webkit-box-flex: 1;

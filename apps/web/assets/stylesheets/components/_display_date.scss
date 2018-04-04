@@ -1,0 +1,21 @@
+.title {
+  flex:8;
+}
+  .entry-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+
+  }
+  .display-entry{
+    border-radius: 1rem;
+    padding: .25rem;
+    max-width: 8rem;
+    flex: 1;
+    text-overflow: ellipsis;
+    text-align: center;
+    background-color: $color-primary;
+    color: $color-text-secondary;
+  }

@@ -3,11 +3,22 @@ module Web::Views::Home
     include Web::View
 
     def next_link
-      raw "<a href=\"/#{year.year + 1}\" id=\"next-year\">#{ image 'right-arrow.png'} </a>"
+      link_to("/#{year.year + 1}",class: 'nav-button', id: 'next-year') do
+        image('right-arrow.png')
+      end
+    end
+
+    def home
+      url = routes.root_path(year: year.year)
+      link_to(url, class: 'nav-button') do
+        image('home.png')
+      end
     end
 
     def previous_link
-      raw "<a href=\"/#{year.year - 1}\" id=\"previous-year\">#{ image 'left-arrow.png' }</a>"
+      link_to("/#{year.year - 1}",class: 'nav-button', id: 'previous-year') do
+        image('left-arrow.png')
+      end
     end
 
     def style(day)

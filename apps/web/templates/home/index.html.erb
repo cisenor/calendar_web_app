@@ -1,23 +1,26 @@
-  <div class="header">
-    <span class="year-control">
-      <%= previous_link %>
-    </span>
-    <span  id="title-year">
-      <%= year.year %>
-    </span>
-    <span class="year-control">
-      <%= next_link %>
-    </span>
-  </div>
-  <div class="calendar">
+<div class="header">
+  <span class="title-control">
+    <%= home %>
+  </span>
+  <span class="title-control">
+    <%= previous_link %>
+  </span>
+  <span  class="title">
+    <%= year.year %>
+  </span>
+  <span class="title-control">
+    <%= next_link %>
+  </span>
+</div>
+<div class="calendar">
   <div class="year-wrapper">
     <div class="year-container">
-      <% year.months.each do |month| %> 
+      <% year.months.each do |month| %>
         <%= render partial: 'home/month', locals: { month: month } %>
       <% end %>
     </div>
   </div>
   <div class="date-container">
-     <%= render partial: 'home/important_dates'%>
+    <%= render partial: 'home/important_dates'%>
   </div>
 </div>
