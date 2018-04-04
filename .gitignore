@@ -2,3 +2,4 @@
 /[Ll]ogs/
 /public/assets*
 /tmp
+logs/hanami.log
