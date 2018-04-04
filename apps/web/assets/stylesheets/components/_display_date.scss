@@ -1,7 +1,6 @@
 .title {
-  flex:1;
+  flex:8;
 }
-.day-planner{
   .entry-list{
     display: flex;
     flex-direction: row;
@@ -20,4 +19,3 @@
     background-color: $color-primary;
     color: $color-text-secondary;
   }
-}

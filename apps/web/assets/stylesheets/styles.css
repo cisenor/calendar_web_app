@@ -177,14 +177,14 @@ html {
 .nav-button {
   line-height: 2rem;
   text-decoration: none;
-  background: #9ea4b6;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#9ea4b6), to(#959caf));
-  background-image: linear-gradient(to bottom, #9ea4b6, #959caf);
-  border-radius: 3rem;
+  background: #d9dde8;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d9dde8), to(#cfd4e2));
+  background-image: linear-gradient(to bottom, #d9dde8, #cfd4e2);
+  border-radius: .1rem;
   color: inherit;
   padding: 0;
   margin: auto;
-  width: 2rem;
+  width: 4rem;
   height: 2rem;
   display: block;
   flex: 1; }
@@ -201,15 +201,16 @@ html {
   background-color: #fda9a9; }
 
 .title {
-  flex: 1; }
+  flex: 8; }
 
-.day-planner .entry-list {
+.entry-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: center; }
-.day-planner .display-entry {
+
+.display-entry {
   border-radius: 1rem;
   padding: .25rem;
   max-width: 8rem;

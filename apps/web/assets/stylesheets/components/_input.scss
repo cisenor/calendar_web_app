@@ -11,15 +11,16 @@
   cursor: pointer;
 }
 
+
 .nav-button {
   line-height: $title-control-button-size;;
   text-decoration: none;
   @include gradient($color-secondary);
-  border-radius: 3rem;
+  border-radius: .1rem;
   color: inherit;
   padding:0;
   margin: auto;
-  width:$title-control-button-size;
+  width: 4rem;
   height:$title-control-button-size;
   display: block;
   flex:1;

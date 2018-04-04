@@ -8,6 +8,13 @@ module Web::Views::Home
       end
     end
 
+    def home
+      url = routes.root_path(year: year.year)
+      link_to(url, class: 'nav-button') do
+        image('home.png')
+      end
+    end
+
     def previous_link
       link_to("/#{year.year - 1}",class: 'nav-button', id: 'previous-year') do
         image('left-arrow.png')
