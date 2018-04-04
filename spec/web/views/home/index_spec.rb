@@ -2,12 +2,14 @@ require_relative '../../../spec_helper'
 
 describe Web::Views::Home::Index do
   let(:repo)      { CalendarEntryRepository.new }
+  let(:current_user) { UserRepository.new.all.first }
   let(:exposures) do
     Hash[
       year: Year.new(2018),
       formatter: FormatFactory.new.create(''),
       entry_list: CalendarEntryRepository.new,
-      format: 'html'
+      format: 'html',
+      current_user: current_user
     ]
   end
   let(:template)  { Hanami::View::Template.new('apps/web/templates/home/index.html.erb') }
@@ -29,7 +31,8 @@ describe Web::Views::Home::Index do
       year: Year.new(2000),
       formatter: FormatFactory.new.create(''),
       entry_list: CalendarEntryRepository.new,
-      format: 'html'
+      format: 'html',
+      current_user: current_user
     ]
     temp = Hanami::View::Template.new('apps/web/templates/home/index.html.erb')
     v = Web::Views::Home::Index.new(temp, exp)
@@ -40,7 +43,7 @@ describe Web::Views::Home::Index do
 
   it 'if there are no calendar entries, displays an empty message' do
     repo.clear
-    exp = Hash[year: Year.new(2000), formatter: FormatFactory.new.create(''), entry_list: repo, format: 'html']
+    exp = Hash[year: Year.new(2000), formatter: FormatFactory.new.create(''), entry_list: repo, format: 'html', current_user: current_user]
     temp = Hanami::View::Template.new('apps/web/templates/home/index.html.erb')
     v = Web::Views::Home::Index.new(temp, exp)
     rendered_empty = v.render
@@ -51,7 +54,7 @@ describe Web::Views::Home::Index do
     repo.clear
     repo.create(name: 'Christmas', month: 12, day: 25)
     repo.create(name: 'Remembrance Day', month: 11, day: 11)
-    exp = Hash[year: Year.new(2000), formatter: FormatFactory.new.create(''), entry_list: repo, format: 'html']
+    exp = Hash[year: Year.new(2000), formatter: FormatFactory.new.create(''), entry_list: repo, format: 'html', current_user: current_user]
     temp = Hanami::View::Template.new('apps/web/templates/home/index.html.erb')
     v = Web::Views::Home::Index.new(temp, exp)
     rendered_holidays = v.render

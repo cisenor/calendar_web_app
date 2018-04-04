@@ -4,12 +4,8 @@ describe Web::Controllers::Dates::Create do
   let(:action) { Web::Controllers::Dates::Create.new }
   let(:repo) { CalendarEntryRepository.new }
 
-  before do
-    repo.clear
-  end
-
   describe 'with valid parameters' do
-    let(:params) { Hash[calendar_entry_fixed: { name: 'test123', month: 2, day: 2 }] }
+    let(:params) { Hash[calendar_entry_fixed: { name: 'test123', month: 2, day: 2 }, 'warden' => warden] }
 
     it 'creates a new calendar entry' do
       action.call(params)
@@ -25,7 +21,7 @@ describe Web::Controllers::Dates::Create do
   end
 
   describe 'with empty parameters' do
-    let(:empty_params) { Hash[calendar_entry_fixed: {}] }
+    let(:empty_params) { Hash[calendar_entry_fixed: {}, 'warden' => warden] }
     it 'returns a client error' do
       response = action.call(empty_params)
       response[0].must_equal 422
@@ -40,7 +36,7 @@ describe Web::Controllers::Dates::Create do
   end
 
   describe 'with invalid parameters' do
-    let(:invalid_params) { Hash[calendar_entry_fixed: { name: '1234567890123456789012345678901234567890', month: -1, day: 0 }] }
+    let(:invalid_params) { Hash[calendar_entry_fixed: { name: '1234567890123456789012345678901234567890', month: -1, day: 0 }, 'warden' => warden] }
     it 'returns a client error' do
       response = action.call(invalid_params)
       response[0].must_equal 422

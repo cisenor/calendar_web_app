@@ -4,7 +4,6 @@ class UserRepository < Hanami::Repository
     info = auth_hash[:info]
     github_id = auth_hash[:uid]
     attrs = { name: info[:nickname], email: info[:email] }
-    p auth_hash
     if user = repo.users.where(github_id: attrs[:github_id]).first
       user.update(attrs)
       update user
