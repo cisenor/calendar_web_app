@@ -3,6 +3,10 @@
   display: -ms-flexbox;
   display: flex;
 }
+
+.round {
+  border-radius: 3rem !important;
+}
 .year-wrapper {
   border: 1px solid $border-color;
   border-right: none;

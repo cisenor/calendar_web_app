@@ -81,11 +81,17 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/rack/Rack/Session/Cookie
       #
-      # sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
+      sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
 
       # Configure Rack middleware for this application
       #
       # middleware.use Rack::Protection
+      middleware.use Warden::Manager do |manager|
+        manager.failure_app = Web::Controllers::Session::Failure.new
+      end
+      middleware.use OmniAuth::Builder do
+        provider :github, ENV['GITHUB_CLIENT_KEY'], ENV['GITHUB_CLIENT_SECRET']
+      end
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, defaults to :html
@@ -260,6 +266,7 @@ module Web
       # See: http://www.rubydoc.info/gems/hanami-controller#Configuration
       controller.prepare do
         # include MyAuthentication # included in all the actions
+        include Web::Authentication
         # before :authenticate!    # run an authentication before callback
       end
 

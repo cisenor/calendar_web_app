@@ -55,6 +55,9 @@ html {
   display: -ms-flexbox;
   display: flex; }
 
+.round {
+  border-radius: 3rem !important; }
+
 .year-wrapper {
   border: 1px solid silver;
   border-right: none;
@@ -219,6 +222,19 @@ html {
   text-align: center;
   background-color: #256a97;
   color: #ffffff; }
+
+.title-control.user-info {
+  display: flex;
+  flex: 1.2;
+  justify-content: space-between; }
+  .title-control.user-info span {
+    max-width: 2rem;
+    font-size: medium; }
+  .title-control.user-info a {
+    max-width: 4rem; }
+  .title-control.user-info img {
+    padding-top: 3px;
+    height: 90%; }
 
 body {
   font-family: sans-serif; }

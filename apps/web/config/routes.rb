@@ -18,3 +18,7 @@ get '/date/:year/:month/:day',
     day: /\d{1,2}/,
     to: 'date#display',
     as: :display_date
+get '/session/new', to: 'session#new', as: :session_new
+get '/auth/failure', to: 'session#failure', as: :session_fail
+get '/auth/signout', to: 'session#destroy', as: :signout
+get '/auth/:provider/callback', to: 'session#new'
