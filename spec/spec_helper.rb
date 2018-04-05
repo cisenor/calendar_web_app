@@ -27,4 +27,4 @@ def create_private_entry(user)
   entry_repo = CalendarEntryRepository.new
   entry_repo.create_private(name: 'private_date', month: 12, day: 12, user: user)
 end
-login_as(UserRepository.new.create(name: 'Test User', github_id: '123121'))
+login_as(get_test_user)
