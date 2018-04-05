@@ -6,7 +6,7 @@ describe CalendarEntryRepository do
   # place your tests here
   it 'returns a :holiday style tag for holidays' do
     repo.clear
-    repo.create(name: 'Christmas', month: 12, day: 25, holiday: 1)
+    repo.create_public(name: 'Christmas', month: 12, day: 25, holiday: 1)
     style = repo.style(Date.new(2000, 12, 25))
     style.must_equal :holiday
 

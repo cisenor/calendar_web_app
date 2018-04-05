@@ -7,11 +7,20 @@ module Web::Controllers::Dates
 
     def call(params)
       if params.valid?
-        CalendarEntryRepository.new.delete(params[:id])
-        redirect_to request.get_header("Referer") || '/'
+        if CalendarEntryRepository.new.safe_delete(params, current_user).nil?
+          self.status = 422
+        else
+          redirect_to request.get_header("Referer") || '/'
+        end
       else
         self.status = 422
       end
+    end
+
+    private
+
+    def delete(params)
+      self.status = 422 if CalendarEntryRepository.new.safe_delete(params, current_user).nil?
     end
   end
 end

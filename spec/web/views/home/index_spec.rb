@@ -41,8 +41,8 @@ describe Web::Views::Home::Index do
 
   it 'if there are public entries, display them in a list' do
     repo.clear
-    repo.create_public('Christmas', 12, 25)
-    repo.create_public('Remembrance Day', 11, 11)
+    repo.create_public(name: 'Christmas', month: 12, day: 25)
+    repo.create_public(name: 'Remembrance Day', month: 11, day: 11)
     rendered_holidays = render(2000)
     rendered_holidays.scan('2000-12-25 - Christmas').count.must_equal 1
     rendered_holidays.scan('2000-11-11 - Remembrance Day').count.must_equal 1
@@ -53,12 +53,12 @@ describe Web::Views::Home::Index do
   it 'displays public and private entries' do
     repo.clear
     user_repo.clear
-    repo.create_public('Christmas', 12, 25)
-    repo.create_public('Remembrance Day', 11, 11)
+    repo.create_public(name: 'Christmas', month: 12, day: 25)
+    repo.create_public(name: 'Remembrance Day', month: 11, day: 11)
     user = user_repo.create(name: 'Test1', github_id: '12121212')
     not_me = user_repo.create(name: 'not-me', github_id: '232323')
-    repo.create_private('Special Day', 12, 12, not_me)
-    repo.create_private('My Birthday', 6, 30, user)
+    repo.create_private(name: 'Special Day', month: 12, day: 12, user: not_me)
+    repo.create_private(name: 'My Birthday', month: 6, day: 30, user: user)
     rendered = render(2000, user)
     rendered.scan('class="public-entry"').count.must_equal 2
     rendered.scan('class="private-entry"').count.must_equal 1

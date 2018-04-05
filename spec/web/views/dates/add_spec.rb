@@ -10,7 +10,7 @@ describe Web::Views::Dates::Add do
       ]
     )
   end
-  let(:exposures) { Hash[params: params, format: :html] }
+  let(:exposures) { Hash[params: params, format: :html, current_user: nil] }
   let(:template)  { Hanami::View::Template.new('apps/web/templates/dates/add.html.erb') }
   let(:view)      { Web::Views::Dates::Add.new(template, exposures) }
   let(:rendered)  { view.render }

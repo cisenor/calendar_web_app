@@ -20,14 +20,16 @@
       months = {January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12 }
 
       form_for :calendar_entry_fixed, routes.create_path do
-        div class: 'radio-buttons' do
-          div do
-            radio_button :entry_access, 'Public', {id: 'entry-access-public'}
-            label        :public, {for: 'entry-access-public'}
-          end
-          div do
-            radio_button :entry_access, 'Private', {id: 'entry-access-private'}
-            label        :private, {for: 'entry-access-private'}
+        if current_user
+          div class: 'radio-buttons' do
+            div do
+              radio_button :entry_access, 'Public', {id: 'entry-access-public'}
+              label        :public, {for: 'entry-access-public'}
+            end
+            div do
+              radio_button :entry_access, 'Private', {id: 'entry-access-private'}
+              label        :private, {for: 'entry-access-private'}
+            end
           end
         end
         div class: 'input' do
