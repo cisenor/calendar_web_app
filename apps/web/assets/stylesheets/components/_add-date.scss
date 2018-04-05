@@ -1,14 +1,26 @@
 // Date Add.
 .wrapper {
   width: 30%;
+  background: $color-background-secondary;
+  border: 1px solid $border-color;
   margin: 1em auto;
+  padding: 2rem;
+  border-radius: 3px;
 }
 .radio-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: flex-start;
+  align-content: flex-start;
+  div {
+    width: 20%;
+    input, label {
+      display: inline-block;
+      width: auto;
+    }
+  }
 }
 .date-form {
   label {

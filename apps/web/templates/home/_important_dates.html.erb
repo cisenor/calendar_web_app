@@ -20,5 +20,5 @@
     <div>There are no calendar entries stored.</div>
   <% end %>
   <div class="controls">
-    <%= link_to('Add a date', routes.path(:add_date), class: 'btn') %>
+    <%= link_to('Add a date', routes.add_date_path(date_type: {date_type: 'Fixed'}, calendar_entry_fixed: {entry_access: 'Public'} ), class: 'btn') %>
   </div>
