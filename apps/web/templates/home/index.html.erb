@@ -1,11 +1,16 @@
 <div class="header">
-  <span class="title-control">
-    <%= home %>
+  <span class="title-control user-info">
+    <% if current_user %>
+      <%= user_button %>
+      <%= logout_button %>
+    <% else %>
+      <%= login_button %>
+    <% end %>
   </span>
   <span class="title-control">
     <%= previous_link %>
   </span>
-  <span  class="title">
+  <span class="title">
     <%= year.year %>
   </span>
   <span class="title-control">

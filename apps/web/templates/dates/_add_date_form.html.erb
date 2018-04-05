@@ -2,22 +2,36 @@
   <div class="note">
     <p>Add a date to the calendar using either a fixed date or an occurrence.</p>
   </div>
-  <div class="radio-buttons">
-    <div>
-      <input type="radio" value="fixed" id="radio-fixed" name="date-type" checked />
-      <label for="radio-fixed">Fixed</label>
-    </div>
-    <div>
-      <input type="radio" id="radio-occurrence" value="occurrence" name="date-type">
-      <label for="radio-occurrence">Occurrence</label>
-    </div>
-  </div>
+  <%= form_for :date_type, '#' do
+        div class: 'radio-buttons' do
+          div class: '' do
+            radio_button :date_type, 'Fixed', {id: 'radio-fixed'}
+            label        :fixed, {for: 'radio-fixed'}
+          end
+          div class: '' do
+            radio_button :date_type, 'Occurrence', {id: 'radio-occurrence'}
+            label        :occurrence, {for: 'radio-occurrence'}
+          end
+        end
+  end %>
   <div class="date-form" id="form-fixed">
     <p>Create a fixed date.</p>
     <%=
       months = {January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12 }
 
       form_for :calendar_entry_fixed, routes.create_path do
+        if current_user
+          div class: 'radio-buttons' do
+            div do
+              radio_button :entry_access, 'Public', {id: 'entry-access-public'}
+              label        :public, {for: 'entry-access-public'}
+            end
+            div do
+              radio_button :entry_access, 'Private', {id: 'entry-access-private'}
+              label        :private, {for: 'entry-access-private'}
+            end
+          end
+        end
         div class: 'input' do
           label         :name
           text_field    :name

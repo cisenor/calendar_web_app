@@ -10,7 +10,9 @@ describe 'Add a new date' do
 
   describe 'Fixed date' do
     it 'can create a new fixed date' do
-      visit '/dates/add'
+      login_as UserRepository.new.last
+      visit '/'
+      click_link 'Add a date' 
       within 'form#calendar_entry_fixed-form' do
         fill_in 'Name', with: 'Chrimbo'
         select 'December', from: 'Month'

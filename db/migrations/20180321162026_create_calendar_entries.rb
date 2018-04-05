@@ -10,6 +10,7 @@ Hanami::Model.migration do
       column :day, Integer, null: true
       column :occurrence_week, Integer, null: true
       column :occurrence_weekday, Integer, null: true
+      column :user_id, Integer, null: true
     end
   end
 end

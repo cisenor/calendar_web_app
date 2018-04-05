@@ -1,11 +1,38 @@
 class CalendarEntryRepository < Hanami::Repository
+
   def style(date)
     return ':none' unless date.class == Date
     day_tag date
   end
 
-  def sorted(year)
-    calendar_entries.to_a.sort do |a, b|
+  # Return all public entries and any private entries created by the provided user.
+  def entries(user = nil)
+    entries = calendar_entries.where(user_id: nil).to_a
+    entries.concat(calendar_entries.where(user_id: user.id)).to_s if user
+    entries
+  end
+
+  def create_private(options)
+    options = options.merge(user_id: options.fetch(:user).id)
+    create(options)
+  end
+
+  def create_public(options)
+    create(options)
+  end
+
+  # returns the deleted entry, or nil if failed
+  def safe_delete(params, user = nil)
+    id = params[:id]
+    if entry_is_public?(id)
+      delete(id)
+    else
+      delete_if_owned(id, user)
+    end
+  end
+
+  def sorted(year, user = nil)
+    entries(user).to_a.sort do |a, b|
       diff = a.date(year) - b.date(year)
       next diff unless diff.zero?
       a.name.casecmp b.name
@@ -18,6 +45,19 @@ class CalendarEntryRepository < Hanami::Repository
   end
 
   private
+
+  # returns true if public
+  def entry_is_public?(id)
+    entry = calendar_entries.where(id: id).first
+    entry && entry.user_id.nil?
+  end
+
+  def delete_if_owned(id, user)
+    return unless user
+    entry = calendar_entries.where(id: id).first
+    return unless entry.user_id == user.id
+    delete(id)
+  end
 
   def day_tag(date)
     return :leap if date.month == 2 && date.day == 29

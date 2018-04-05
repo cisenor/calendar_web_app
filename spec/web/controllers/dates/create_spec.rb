@@ -3,18 +3,31 @@ require_relative '../../../spec_helper'
 describe Web::Controllers::Dates::Create do
   let(:action) { Web::Controllers::Dates::Create.new }
   let(:repo) { CalendarEntryRepository.new }
+  let(:user_repo) { UserRepository.new }
 
-  before do
+  def before_setup
     repo.clear
+    user_repo.clear
   end
 
   describe 'with valid parameters' do
-    let(:params) { Hash[calendar_entry_fixed: { name: 'test123', month: 2, day: 2 }] }
+    let(:params) { Hash[calendar_entry_fixed: { name: 'test123', month: 2, day: 2, entry_access: 'Public' }, 'warden' => warden] }
 
-    it 'creates a new calendar entry' do
+    it 'creates a new public calendar entry' do
       action.call(params)
       entry = repo.last
       entry.name.must_equal 'test123'
+    end
+
+    it 'creates a new private calendar entry' do
+      user = user_repo.create(name: 'test_user1', github_id: '12341234')
+      login_as user
+      action.call(Hash[calendar_entry_fixed: { name: 'test234', month: 2, day: 1, entry_access: 'Private' }, 'warden' => warden])
+      Warden.test_reset!
+      entry = repo.last
+      entry.name.must_equal 'test234'
+      entry.user_id.must_equal user.id
+      repo.all.size.must_equal 1
     end
 
     it 'redirects the user' do
@@ -25,7 +38,7 @@ describe Web::Controllers::Dates::Create do
   end
 
   describe 'with empty parameters' do
-    let(:empty_params) { Hash[calendar_entry_fixed: {}] }
+    let(:empty_params) { Hash[calendar_entry_fixed: {}, 'warden' => warden] }
     it 'returns a client error' do
       response = action.call(empty_params)
       response[0].must_equal 422
@@ -40,7 +53,7 @@ describe Web::Controllers::Dates::Create do
   end
 
   describe 'with invalid parameters' do
-    let(:invalid_params) { Hash[calendar_entry_fixed: { name: '1234567890123456789012345678901234567890', month: -1, day: 0 }] }
+    let(:invalid_params) { Hash[calendar_entry_fixed: { name: '1234567890123456789012345678901234567890', month: -1, day: 0 }, 'warden' => warden] }
     it 'returns a client error' do
       response = action.call(invalid_params)
       response[0].must_equal 422

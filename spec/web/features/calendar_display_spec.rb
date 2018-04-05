@@ -1,6 +1,10 @@
 require 'features_helper'
 
 describe 'Show calendar' do
+  let(:exposures) { Hash[] }
+  let(:template)  { Hanami::View::Template.new('apps/web/templates/home/index.html.erb') }
+  let(:view)      { Web::Views::Home::Index.new(template, exposures) }
+  let(:rendered)  { view.render }
   let(:year) { Year.new(2018) }
   it 'defaults to current year' do
     visit '/'

@@ -1,0 +1,16 @@
+.title-control.user-info{
+  display: flex;
+  flex:1.2;
+  justify-content: space-between;
+  span {
+    max-width: 2rem;
+    font-size: medium;
+  }
+  a {
+    max-width: 4rem;
+  }
+ img {
+  padding-top: 3px;
+  height: 90%;
+  }
+}

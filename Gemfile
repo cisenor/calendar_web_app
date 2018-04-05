@@ -4,6 +4,8 @@ gem 'hanami',       '~> 1.1'
 gem 'hanami-model', '~> 1.1'
 gem 'minitest-reporters'
 gem 'htmlbeautifier'
+gem "omniauth-github"
+gem "warden"
 gem 'rake'
 
 gem 'sqlite3'

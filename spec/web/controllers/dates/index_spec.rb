@@ -2,7 +2,7 @@ require_relative '../../../spec_helper'
 
 describe Web::Controllers::Dates::Index do
   let(:action) { Web::Controllers::Dates::Index.new }
-  let(:params) { Hash[] }
+  let(:params) { Hash['warden' => warden] }
 
   it 'is successful' do
     response = action.call(params)

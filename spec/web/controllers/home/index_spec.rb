@@ -2,8 +2,9 @@ require_relative '../../../spec_helper'
 require_relative '../../../../lib/calendar/models/year'
 
 describe Web::Controllers::Home::Index do
+  before {login_as UserRepository.new.all.first}
   let(:action) { Web::Controllers::Home::Index.new }
-  let(:params) { Hash[year: 2018] }
+  let(:params) { Hash[year: 2018, 'warden' => warden] }
   let(:important_dates) { CalendarEntryRepository.new }
 
   it 'is successful' do
@@ -22,7 +23,7 @@ describe Web::Controllers::Home::Index do
   end
 
   it 'initializes the year parameter to a year parameter' do
-    params = Hash[year: 2000]
+    params = Hash[year: 2000, 'warden' => warden]
     action.call(params)
     action.year == Year.new(2000)
   end
