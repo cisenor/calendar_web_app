@@ -1,16 +1,16 @@
 require 'features_helper'
 
 describe 'Add a new date' do
-  after do
-    CalendarEntryRepository.new.clear
-  end
-  before do
-    CalendarEntryRepository.new.clear
+  let(:repo)      { CalendarEntryRepository.new }
+  let(:user_repo) { UserRepository.new }
+  def before_setup
+    repo.clear
+    user_repo.clear
   end
 
   describe 'Fixed date' do
     it 'can create a new fixed date' do
-      login_as UserRepository.new.last
+      login_as get_test_user
       visit '/'
       click_link 'Add a date' 
       within 'form#calendar_entry_fixed-form' do

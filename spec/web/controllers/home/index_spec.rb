@@ -2,7 +2,7 @@ require_relative '../../../spec_helper'
 require_relative '../../../../lib/calendar/models/year'
 
 describe Web::Controllers::Home::Index do
-  before {login_as UserRepository.new.all.first}
+  before { login_as get_test_user}
   let(:action) { Web::Controllers::Home::Index.new }
   let(:params) { Hash[year: 2018, 'warden' => warden] }
   let(:important_dates) { CalendarEntryRepository.new }

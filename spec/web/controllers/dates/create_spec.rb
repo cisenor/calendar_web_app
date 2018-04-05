@@ -20,7 +20,7 @@ describe Web::Controllers::Dates::Create do
     end
 
     it 'creates a new private calendar entry' do
-      user = user_repo.create(name: 'test_user1', github_id: '12341234')
+      user = get_test_user
       login_as user
       action.call(Hash[calendar_entry_fixed: { name: 'test234', month: 2, day: 1, entry_access: 'Private' }, 'warden' => warden])
       Warden.test_reset!

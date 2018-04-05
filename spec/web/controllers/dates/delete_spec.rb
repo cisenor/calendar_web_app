@@ -20,9 +20,9 @@ describe Web::Controllers::Dates::Delete do
 
   describe 'Private entries' do
     it 'can\'t delete other user\'s private entries' do
-      user1 = user_repo.create(name: 'test1', github_id: '12341234')
-      user2 = user_repo.create(name: 'test2', github_id: '12345123')
-      entry = entry_repo.create_private(name: 'user1\'s date', month: 12, day: 12, user: user1)
+      user1 = get_test_user
+      user2 = get_test_user
+      entry = create_private_entry(user1)
       login_as user2
       response = action.call(id: entry.id, 'warden' => warden)
       response[0].must_equal 422

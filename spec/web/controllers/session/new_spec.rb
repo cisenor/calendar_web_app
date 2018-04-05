@@ -11,7 +11,7 @@ describe Web::Controllers::Session::New do
   let(:params) { Hash['omniauth.auth' => Hash[uid: '12321', info: Hash[nickname: 'test user', email: 'fake@fake.com']]] }
 
   it 'is successful' do
-    login_as('test user')
+    login_as get_test_user
     params['warden'] = warden
     response = action.call(params)
     Warden.test_reset!

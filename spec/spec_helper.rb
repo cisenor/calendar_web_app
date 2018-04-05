@@ -12,5 +12,19 @@ Minitest.after_run do
   Warden.test_reset!
 end
 Hanami.boot
-UserRepository.new.clear
+
+def get_test_user
+  repo = UserRepository.new
+  repo.create(name: 'Test', github_id: '12')
+end
+
+def create_public_entry
+  entry_repo = CalendarEntryRepository.new
+  entry_repo.create_public(name: 'public date', month: 12, day: 12)
+end
+
+def create_private_entry(user)
+  entry_repo = CalendarEntryRepository.new
+  entry_repo.create_private(name: 'private_date', month: 12, day: 12, user: user)
+end
 login_as(UserRepository.new.create(name: 'Test User', github_id: '123121'))
