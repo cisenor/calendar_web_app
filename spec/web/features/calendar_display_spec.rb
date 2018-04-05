@@ -6,6 +6,7 @@ describe 'Show calendar' do
   let(:view)      { Web::Views::Home::Index.new(template, exposures) }
   let(:rendered)  { view.render }
   let(:year) { Year.new(2018) }
+  
   it 'defaults to current year' do
     visit '/'
     year = page.find('.title').text

@@ -1,52 +1,48 @@
 require_relative '../../spec_helper'
-
-describe 'when a user is logged in' do
+describe 'Users' do
   let(:user_repo)     { UserRepository.new }
   let(:entry_repo)    { CalendarEntryRepository.new }
-  it 'can see public entries' do
-    entry_repo.clear
-    entry_repo.create_public(name: 'public date', month: 12, day: 12)
-    user = user_repo.create(name: 'Test User', github_id: '123123')
-    entries = entry_repo.entries(user)
-    entries.size.must_equal 1
-    entries.first.name.must_equal 'public date'
-  end
+  describe 'when a user is logged in' do
+    def before_setup
+      entry_repo.clear
+      user_repo.clear
+    end
 
-  it 'can see private entries' do
-    user_repo.clear
-    user = user_repo.create(name: 'Test User', github_id: '1231231')
-    entry_repo.clear
-    entry_repo.create_private(name: 'private_date', month: 12, day: 12, user: user)
-    entry_repo.create_public(name: 'public_date', month: 12, day: 12)
-    entries = entry_repo.entries(user)
-    entries.size.must_equal 2
-    entries.first.name.must_equal 'public_date'
-    entries[1].name.must_equal 'private_date'
-  end
+    it 'can see public entries' do
+      pub = create_public_entry
+      user = get_test_user
+      entries = entry_repo.entries(user)
+      entries.size.must_equal 1
+      entries.first.name.must_equal pub.name
+    end
 
-  it 'can\'t see other users\' private entries' do
-    user_repo.clear
-    entry_repo.clear
-    user1 = user_repo.create(name: 'Test1', github_id: '12121212')
-    user2 = user_repo.create(name: 'Test2', github_id: '23232323')
-    entry_repo.create_private(name: 'private_test', month: 12, day: 12, user: user1)
-    entries = entry_repo.entries(user2)
-    entries.size.must_equal 0
-  end
-end
+    it 'can see private entries' do
+      user = get_test_user
+      pub = create_public_entry
+      priv = create_private_entry(user)
+      entries = entry_repo.entries(user)
+      entries.size.must_equal 2
+      entries.first.name.must_equal pub.name
+      entries[1].name.must_equal priv.name
+    end
 
-describe 'when a user is not logged in' do
-  let(:user_repo)     { UserRepository.new }
-  let(:entry_repo)    { CalendarEntryRepository.new }
+    it 'can\'t see other users\' private entries' do
+      user1 = get_test_user
+      user2 = get_test_user
+      create_private_entry(user1)
+      entries = entry_repo.entries(user2)
+      entries.size.must_equal 0
+    end
 
-  it 'can see only public entries' do
-    entry_repo.clear
-    entry_repo.create_public(name:'public_test', month:12, day:12)
-    user_repo.clear
-    user = user_repo.create(name: 'Test1', github_id: '12121212')
-    entry_repo.create_private(name: 'private_test', month: 12, day: 12, user: user)
-    entries = entry_repo.entries
-    entries.size.must_equal 1
-    entries.first.name.must_equal 'public_test'
+    it 'when not logged in, can see only public entries' do
+      entry_repo.clear
+      user_repo.clear
+      user = get_test_user
+      create_private_entry(user)
+      pub = create_public_entry
+      entries = entry_repo.entries
+      entries.size.must_equal 1
+      entries.first.name.must_equal pub.name
+    end
   end
 end
