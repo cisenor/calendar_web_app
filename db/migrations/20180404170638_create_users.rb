@@ -7,7 +7,6 @@ Hanami::Model.migration do
       column :updated_at, DateTime, null: false
       column :name, String, null: false
       column :github_id, String, null: false
-      column :email, String, null: true
     end
   end
 end

@@ -4,9 +4,9 @@ class UserRepository < Hanami::Repository
     info = auth_hash[:info]
     github_id = auth_hash[:uid]
     attrs = { name: info[:nickname], email: info[:email] }
-    if user = repo.users.where(github_id: attrs[:github_id]).first
+    if user = repo.users.where(github_id: github_id).first
       user.update(attrs)
-      update user
+      repo.users.where(github_id: github_id).first
     else
       repo.create(attrs.merge(github_id: github_id))
     end

@@ -4,6 +4,21 @@ class CalendarEntryRepository < Hanami::Repository
     day_tag date
   end
 
+  # Return all public entries and any private entries created by the provided user.
+  def entries(user = nil)
+    entries = calendar_entries.where(user_id: nil).to_a
+    entries.concat(calendar_entries.where(user_id: user.id)).to_s if user
+    entries
+  end
+
+  def create_private(name, month, day, user)
+    create(name: name, month: month, day: day, user_id: user.id)
+  end
+
+  def create_public(name, month, day)
+    create(name: name, month: month, day: day)
+  end
+
   def sorted(year)
     calendar_entries.to_a.sort do |a, b|
       diff = a.date(year) - b.date(year)
