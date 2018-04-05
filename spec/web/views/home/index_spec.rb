@@ -56,9 +56,12 @@ describe Web::Views::Home::Index do
     repo.create_public('Christmas', 12, 25)
     repo.create_public('Remembrance Day', 11, 11)
     user = user_repo.create(name: 'Test1', github_id: '12121212')
+    not_me = user_repo.create(name: 'not-me', github_id: '232323')
+    repo.create_private('Special Day', 12, 12, not_me)
     repo.create_private('My Birthday', 6, 30, user)
-    rendered = render(2000)
+    rendered = render(2000, user)
     rendered.scan('class="public-entry"').count.must_equal 2
     rendered.scan('class="private-entry"').count.must_equal 1
+    rendered.scan('My Birthday').count.must_equal 1
   end
 end

@@ -1,17 +1,24 @@
 <div class='header'>Important Dates</div>
 <% if entry_list.all.any? %>
   <ul id="entry-list">
-    <% entry_list.sorted(year.year).each do |entry| %>
-      <li><%= 
+    <% entry_list.sorted(year.year, current_user).each do |entry| %>
+      <% if entry.user_id %>
+        <li class="private-entry">
+        <% else %>
+          <li class="public-entry">
+          <% end %>
+          <%= 
       link_to('dates/delete/' + entry.id.to_s) do
         image('remove.png')
       end
-      %><%= entry.display year.year %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <div>There are no calendar entries stored.</div>
-<% end %>
-<div class="controls">
-  <%= link_to('Add a date', routes.path(:add_date), class: 'btn') %>
-</div>
+      %>
+          <%= entry.display year.year %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div>There are no calendar entries stored.</div>
+  <% end %>
+  <div class="controls">
+    <%= link_to('Add a date', routes.path(:add_date), class: 'btn') %>
+  </div>

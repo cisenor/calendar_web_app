@@ -19,8 +19,8 @@ class CalendarEntryRepository < Hanami::Repository
     create(name: name, month: month, day: day)
   end
 
-  def sorted(year)
-    calendar_entries.to_a.sort do |a, b|
+  def sorted(year, user = nil)
+    entries(user).to_a.sort do |a, b|
       diff = a.date(year) - b.date(year)
       next diff unless diff.zero?
       a.name.casecmp b.name
