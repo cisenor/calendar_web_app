@@ -1,7 +1,13 @@
-<% if entries.any? %>
-  <div class="entry-list">
-    <% entries.each do |entry| %>
-      <span class="display-entry"><%= entry.name %></span>
-    <% end %>
-  </div>
-<% end %>
+<div class="display-day">
+  <% if entries.any? %>
+    <div class="entry-list">
+      <% entries.each do |entry| %>
+        <% if entry.user_id %>
+          <span class="display-entry private"><%= entry.name %></span>
+        <% else %>
+          <span class="display-entry"><%= entry.name %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

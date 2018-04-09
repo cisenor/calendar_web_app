@@ -11,27 +11,22 @@ module Web::Controllers::Date
     end
 
     def call(params)
-      if params.valid?
-        @year = params[:year]
-        @month = params[:month]
-        @day = params[:day]
-        unless date_is_valid?
-          return error_out(params, :day, "#{@year}/#{@month}/#{@day} is an invalid date.")
-        end
-        @formatter = FormatFactory.new.create(params[:format])
-        @date = Date.new(@year, @month, @day)
-        @repo = CalendarEntryRepository.new
-        @entries = @repo.entry_by_date(@date)
-      else
-        error_out
-      end
+      return error_out unless params.valid?
+      @year = params[:year]
+      @month = params[:month]
+      @day = params[:day]
+      return error_out(params, :day, "#{@year}/#{@month}/#{@day} is an invalid date.") unless date_is_valid?(params)
+      @formatter = FormatFactory.new.create(params[:format])
+      @date = Date.new(@year, @month, @day)
+      @repo = CalendarEntryRepository.new
+      @entries = @repo.entry_by_date(@date)
     end
 
     private
 
-    def date_is_valid?
-      days_in_month = Date.new(@year, @month, -1).day
-      @day <= days_in_month
+    def date_is_valid?(params)
+      days_in_month = Date.new(params[:year], params[:month], -1).day
+      params[:day] <= days_in_month
     end
 
     def error_out(params = nil, symbol = nil, message = nil)

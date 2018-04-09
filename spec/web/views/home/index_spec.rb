@@ -61,7 +61,7 @@ describe Web::Views::Home::Index do
     repo.create_public(name: 'Remembrance Day', month: 11, day: 11)
     repo.create_private(name: 'Special Day', month: 12, day: 12, user: not_me)
     repo.create_private(name: 'My Birthday', month: 6, day: 30, user: user)
-    
+
     rendered = render(2000, user)
     rendered.scan('class="public-entry"').count.must_equal 2
     rendered.scan('class="private-entry"').count.must_equal 1

@@ -42,6 +42,12 @@ module Web::Views::Home
       )
     end
 
+    def delete_link(entry)
+      link_to("dates/delete/#{entry.id}", id: "delete-entry-#{entry.id}") do
+        image('remove.png')
+      end
+    end
+
     def style(day)
       style_tag = entry_list.style(day)
       formatter.style(style_tag)

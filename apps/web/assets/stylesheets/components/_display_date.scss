@@ -1,5 +1,6 @@
-.title {
-  flex:8;
+
+.display-day{
+  height: $body-height;
 }
   .entry-list{
     display: flex;
@@ -7,15 +8,21 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: center;
-
+  
   }
   .display-entry{
-    border-radius: 1rem;
+    border-radius: $border-radius;
     padding: .25rem;
     max-width: 8rem;
     flex: 1;
     text-overflow: ellipsis;
     text-align: center;
-    background-color: $color-primary;
+    border: 1px solid silver;
+    @include shadow();
+    box-sizing: border-box;
+    @include gradient($entry-color-public);
     color: $color-text-secondary;
   }
+  .private {
+    @include gradient($entry-color-private);
+}

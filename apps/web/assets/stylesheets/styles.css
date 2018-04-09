@@ -40,9 +40,14 @@ html {
   background: #f8f7ff;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f8f7ff), to(#ebe8ff));
   background-image: linear-gradient(to bottom, #f8f7ff, #ebe8ff);
-  height: 100%; }
+  height: 100vh; }
+
+body {
+  margin: 0;
+  padding: 0; }
 
 .header {
+  height: 32px;
   width: 100%;
   font-size: xx-large;
   text-align: center;
@@ -50,7 +55,7 @@ html {
   display: -ms-flexbox;
   display: flex;
   line-height: 2rem;
-  margin-bottom: 0.25rem; }
+  margin: 0.25rem auto; }
   .header .title-control {
     -webkit-box-flex: 1;
     -ms-flex: 1;
@@ -59,6 +64,13 @@ html {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1; }
+  .header .title {
+    flex: 22;
+    box-shadow: 2px 2px rgba(192, 192, 192, 0.5490196078);
+    border-radius: 3px;
+    background: #d9dde8;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#d9dde8), to(#cfd4e2));
+    background-image: linear-gradient(to bottom, #d9dde8, #cfd4e2); }
 
 .calendar {
   display: -webkit-box;
@@ -69,14 +81,14 @@ html {
   border-radius: 3rem !important; }
 
 .year-wrapper {
-  border: 1px solid silver;
   border-right: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
   justify-content: space-around;
-  width: 75%; }
+  width: 75%;
+  height: calc(100vh - 32px - calc(32px) - .5rem); }
 
 .year-container {
   display: -webkit-box;
@@ -91,18 +103,24 @@ html {
   -ms-flex-pack: justify;
   justify-content: space-around;
   padding: 0.25rem;
-  max-width: 64rem; }
+  max-width: 64rem;
+  align-content: flex-start; }
 
 .month {
+  max-height: calc(32px + 32px + (32px * 6));
   width: 15em;
   -webkit-box-flex: 0;
   -ms-flex-positive: 0;
   flex-grow: 0;
-  margin-top: 1rem; }
+  margin-top: 1rem;
+  border: 1px solid silver;
+  border-radius: 3px;
+  box-shadow: 2px 2px rgba(192, 192, 192, 0.5490196078); }
   .month .month-name {
     text-align: center;
     font-size: larger;
-    margin-bottom: 1rem;
+    height: 32px;
+    line-height: 32px;
     background: #256a97;
     color: white; }
   .month .week-header {
@@ -110,7 +128,8 @@ html {
     height: 2em;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    font-weight: bold; }
     .month .week-header span {
       -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -134,7 +153,6 @@ html {
     text-align: center; }
 
 .date-container {
-  border: 1px solid silver;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1; }
@@ -151,6 +169,8 @@ html {
     height: 3rem;
     display: block;
     line-height: 3rem; }
+  .date-container ::-webkit-scrollbar {
+    display: none; }
   .date-container ul {
     list-style: none;
     padding: 0;
@@ -193,10 +213,11 @@ html {
   background: #d9dde8;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#d9dde8), to(#cfd4e2));
   background-image: linear-gradient(to bottom, #d9dde8, #cfd4e2);
-  border-radius: .1rem;
+  border-radius: 3px;
   color: inherit;
   padding: 0;
   margin: auto;
+  box-shadow: 2px 2px rgba(192, 192, 192, 0.5490196078);
   width: 4rem;
   height: 2rem;
   display: block;
@@ -213,8 +234,8 @@ html {
 .friday-13 {
   background-color: #fda9a9; }
 
-.title {
-  flex: 8; }
+.display-day {
+  height: calc(100vh - 32px - calc(32px) - .5rem); }
 
 .entry-list {
   display: flex;
@@ -224,22 +245,36 @@ html {
   align-content: center; }
 
 .display-entry {
-  border-radius: 1rem;
+  border-radius: 3px;
   padding: .25rem;
   max-width: 8rem;
   flex: 1;
   text-overflow: ellipsis;
   text-align: center;
-  background-color: #256a97;
+  border: 1px solid silver;
+  box-shadow: 2px 2px rgba(192, 192, 192, 0.5490196078);
+  box-sizing: border-box;
+  background: #1da438;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1da438), to(#1b9734));
+  background-image: linear-gradient(to bottom, #1da438, #1b9734);
   color: #ffffff; }
+
+.private {
+  background: #90913e;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#90913e), to(#858639));
+  background-image: linear-gradient(to bottom, #90913e, #858639); }
 
 .title-control.user-info {
   display: flex;
-  flex: 1.2;
+  flex: 1.5;
   justify-content: space-between; }
   .title-control.user-info span {
     max-width: 2rem;
-    font-size: medium; }
+    font-size: medium;
+    background: red;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(red), to(orange));
+    background-image: linear-gradient(115deg, red, orange);
+    color: white; }
   .title-control.user-info a {
     max-width: 4rem; }
   .title-control.user-info img {

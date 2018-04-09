@@ -16,10 +16,11 @@
   line-height: $title-control-button-size;;
   text-decoration: none;
   @include gradient($color-secondary);
-  border-radius: .1rem;
+  border-radius: $border-radius;
   color: inherit;
   padding:0;
   margin: auto;
+  @include shadow();
   width: 4rem;
   height:$title-control-button-size;
   display: block;

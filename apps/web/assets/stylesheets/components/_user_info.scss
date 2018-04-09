@@ -1,10 +1,12 @@
 .title-control.user-info{
   display: flex;
-  flex:1.2;
+  flex:1.5;
   justify-content: space-between;
   span {
     max-width: 2rem;
     font-size: medium;
+    @include gradient2($color-user-1, $color-user-2);
+    color: white;
   }
   a {
     max-width: 4rem;

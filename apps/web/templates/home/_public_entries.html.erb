@@ -1,0 +1,11 @@
+<span class='entry-type'>Public Entries</span>
+<ul>
+  <% entry_list.sorted(year.year, current_user).each do |entry| %>
+    <% unless entry.user_id %>
+      <li class="public-entry">
+        <%= delete_link(entry) %>
+        <%= entry.display(year.year) %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

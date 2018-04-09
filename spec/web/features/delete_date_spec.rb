@@ -10,11 +10,11 @@ describe 'Delete dates' do
   end
 
   it 'can delete an entry' do
-    create_public_entry
+    entry = create_public_entry
     visit '/'
     assert page.has_css?('#entry-list')
-    assert page.find('#entry-list li', count: 1)
-    page.find('#entry-list > li > a').click
+    assert page.find("#delete-entry-#{entry.id}", count: 1)
+    page.find("#delete-entry-#{entry.id}").click
     visit '/'
     assert page.has_no_css?('#entry-list')
   end

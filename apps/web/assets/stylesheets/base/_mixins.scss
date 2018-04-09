@@ -13,3 +13,22 @@
     darken($color, $gradient-percent)
   );
 }
+
+@mixin gradient2($color1, $color2){
+  background: $color1;
+  background-image: -webkit-gradient(
+    linear,
+    left top, right bottom,
+    from($color1),
+    to($color2)
+  );
+  background-image: linear-gradient(
+    115deg,
+    $color1,
+    $color2
+  );
+}
+
+@mixin shadow(){
+  box-shadow: 2px 2px rgba(192, 192, 192, 0.5490196078431373);
+}
